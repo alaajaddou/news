@@ -1,10 +1,16 @@
 <?php
 
 use App\Http\Controllers\NewsController;
+use App\Services\PostFetcher;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
     Route::get('/news', [NewsController::class, 'index']);
+
+    Route::get('/sync', function () {
+        $fetcher = new PostFetcher();
+        $fetcher->fetchAllSources();
+    });
 });
 
 
