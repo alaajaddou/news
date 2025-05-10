@@ -13,7 +13,6 @@ class NewsController extends Controller
      */
     public function index(): JsonResponse
     {
-        Log::info('here in index');
         // Get the number of items per page from the query parameter, default to 20 if not provided
         $perPage = request()->query('per_page', 20);
 
