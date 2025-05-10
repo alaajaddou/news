@@ -185,7 +185,7 @@
 <body>
 
 <header>
-    <img src="{{ asset('images/logo.png') }}" alt="Aj Group Logo">
+{{--    <img src="{{ asset('images/logo.png') }}" alt="Aj Group Logo">--}}
     <h1>Aj Group</h1>
     <p>AI Powered Solution Provider</p>
 </header>
