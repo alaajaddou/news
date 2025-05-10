@@ -3,6 +3,7 @@
 namespace App\Services;
 
 
+use App\Jobs\FetchSourceJob;
 use App\Models\Post;
 use App\Models\Source;
 use Carbon\Carbon;
@@ -14,11 +15,11 @@ class PostFetcher
 {
     public function fetchAllSources(): void
     {
-        $sources = Source::all();
+	    $sources = Source::all();
 
-        foreach ($sources as $source) {
-            $this->fetchSource($source);
-        }
+	    foreach ($sources as $source) {
+		    FetchSourceJob::dispatch($source);
+	    }
     }
 
     public function fetchSource(Source $source): void

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
+	
     $fetcher = new PostFetcher();
     $fetcher->fetchAllSources();
     return view('welcome');
