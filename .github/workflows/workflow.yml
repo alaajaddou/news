@@ -20,6 +20,9 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            # Load nvm environment
+            source /home/webdeploy/.nvm/nvm.sh
+            nvm use v22.15.0  # Use the appropriate node version
             cd /var/www/htdocs/website
             git fetch
             git pull origin stable
