@@ -18,14 +18,15 @@
         }
 
         header {
-            background-color: #1f2937;
-            color: white;
-            padding: 3rem 1rem;
+
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: #FFFFFF;
+            padding: 1rem 1rem;
             text-align: center;
         }
 
         header img {
-            max-width: 80px;
+            max-width: 200px;
         }
 
         header h1 {
@@ -185,7 +186,7 @@
 <body>
 
 <header>
-{{--    <img src="{{ asset('images/logo.png') }}" alt="Aj Group Logo">--}}
+    <img src="{{ asset('images/logo.png') }}" alt="Aj Group Logo">
     <h1>Aj Group</h1>
     <p>AI Powered Solution Provider</p>
 </header>

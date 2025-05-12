@@ -7,7 +7,6 @@ use App\Jobs\FetchSourceJob;
 use App\Models\Post;
 use App\Models\Source;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use willvincent\Feeds\Facades\FeedsFacade;
 
