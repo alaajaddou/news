@@ -21,6 +21,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /var/www/htdocs/website
+            git fetch
             git pull origin stable
             composer install --no-interaction --prefer-dist --optimize-autoloader
             npm i
