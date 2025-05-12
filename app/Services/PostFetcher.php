@@ -69,7 +69,7 @@ class PostFetcher
 
             Log::info("Finished fetching {$newCount} new posts from RSS source: {$source->name}");
         } catch (\Exception $e) {
-            Log::error("Failed to fetch RSS from source {$source->name}: " . $e->getMessage());
+            Log::error("Failed to fetch RSS from source {$source->name}: " . $e->getMessage(), [$e]);
         }
     }
 }
