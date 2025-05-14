@@ -10,7 +10,7 @@ return new class extends Migration {
 	 */
 	public function up(): void
 	{
-		Schema::createIfNotExists('failed_import_rows', function (Blueprint $table) {
+		Schema::create('failed_import_rows', function (Blueprint $table) {
 			$table->id();
 			$table->json('data');
 			$table->foreignId('import_id')->constrained()->cascadeOnDelete();
