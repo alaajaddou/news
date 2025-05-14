@@ -27,9 +27,11 @@ class PostFetcher
 			Log::info("Fetching started for RSS source: {$source->name} ({$source->url})");
 
 			$feed = FeedsFacade::make($source->url);
+			Log::info("Feed created");
 			$items = $feed->get_items();
+			Log::info("Items fetched");
 			$mapping = json_decode($source->field_mapping, true); // e.g. ['id' => 'get_id', 'title' => 'get_title']
-
+			Log::info("Mapping fetched");
 			Log::info("Received " . count($items) . " items from RSS source: {$source->name}");
 
 			$newCount = 0;
