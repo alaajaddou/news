@@ -24,7 +24,6 @@ jobs:
             source /home/webdeploy/.nvm/nvm.sh
             nvm use v22.15.0  # Use the appropriate node version
             cd /var/www/htdocs/website
-            chmod -R 777 .
             git stash
             git fetch
             git pull origin stable
