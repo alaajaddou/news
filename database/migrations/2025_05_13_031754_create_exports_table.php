@@ -10,7 +10,7 @@ return new class extends Migration {
 	 */
 	public function up(): void
 	{
-		Schema::create('exports', function (Blueprint $table) {
+		Schema::createIfNotExists('exports', function (Blueprint $table) {
 			$table->id();
 			$table->timestamp('completed_at')->nullable();
 			$table->string('file_disk');
