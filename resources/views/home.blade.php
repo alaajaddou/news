@@ -21,9 +21,9 @@
     <!-- About Section -->
     <section class="py-5 py-md-7 bg-light">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-center justify-content-center text-center">
                 <div class="col-lg-6 mb-4 mb-lg-0 text-ccenter">
-                    <img style="width: 200px; height: 200px; margin: auto;" src="https://media.licdn.com/dms/image/v2/C4D03AQGqXB9-GMmLqQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1581969691126?e=1753315200&v=beta&t=sQbR6McMKTCuDj3jPJfPS2PVF6hbRablq3FHd9knOQw" alt="Alaa M. Jaddou" class="img-fluid rounded shadow-lg">
+                    <img style="width: 200px; height: 200px; margin: auto;" src="https://media.licdn.com/dms/image/v2/C4D03AQGqXB9-GMmLqQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1581969691126?e=1753315200&v=beta&t=sQbR6McMKTCuDj3jPJfPS2PVF6hbRablq3FHd9knOQw" alt="Alaa M. Jaddou" class="img-fluid rounded rounded-circle shadow-lg">
                 </div>
                 <div class="col-lg-6">
                     <h2 class="fs-1 fw-bold text-dark mb-3">Hi, I'm Alaa M. Jaddou</h2>
