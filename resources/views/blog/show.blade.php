@@ -59,7 +59,7 @@
         }
 
         .post-content blockquote {
-            border-left: 4px solid #3b82f6;
+            border-left: 4px solid #e74c3c;
             padding-left: 1rem;
             margin-left: 0;
             margin-right: 0;

@@ -6,14 +6,10 @@ export default defineConfig({
     laravel({
       input: [
         'resources/sass/app.scss',
-        'resources/js/app.js'
+        'resources/js/app.js',
+        'resources/css/filament/admin/theme.css'
       ],
       refresh: true
     })
-  ],
-  resolve: {
-    alias: {
-      '~bootstrap': 'node_modules/bootstrap'
-    }
-  }
+  ]
 });

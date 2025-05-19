@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="@yield('meta_description', 'Aj Group - Your Friendly Guide to the Future of AI')">
-    <meta property="og:title" content="@yield('og_title', 'Aj Group')">
-    <meta property="og:description" content="@yield('og_description', 'Your Friendly Guide to the Future of AI')">
-    <meta property="og:image" content="@yield('og_image', asset('images/ai-tech-guy-logo.png'))">
+    <meta name="description" content="@yield('meta_description', 'Alaa M. Jaddou - Senior Software Engineer')">
+    <meta property="og:title" content="@yield('og_title', 'Alaa M. Jaddou - Senior Software Engineer')">
+    <meta property="og:description" content="@yield('og_description', 'Frontend Software Engineer aiming toward AI + Software Architect')">
+    <meta property="og:image" content="@yield('og_image', asset('images/alaa-jaddou-logo.png'))">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
-    <title>@yield('title', 'Aj Group - Your Friendly Guide to the Future of AI')</title>
+    <title>@yield('title', 'Alaa M. Jaddou - Senior Software Engineer')</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -22,41 +22,44 @@
 
     @yield('styles')
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 font-sans">
     <!-- Header -->
-    <header class="bg-primary py-3">
-        <nav class="navbar navbar-expand-lg navbar-dark container">
-            <div class="container-fluid">
-                <a class="navbar-brand fw-bold fs-4" href="{{ route('home') }}">Aj Group</a>
+    <header class="bg-indigo-700 shadow-md">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a class="flex-shrink-0 flex items-center text-white font-bold text-xl" href="{{ route('home') }}">
+                        Alaa M. Jaddou
+                    </a>
+                </div>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" 
-                        aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <!-- Mobile menu button -->
+                <div class="flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="text-white hover:text-gray-200 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
 
-                <div class="collapse navbar-collapse" id="navbarMain">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" 
-                               href="{{ route('home') }}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" 
-                               href="{{ route('about') }}">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}" 
-                               href="{{ route('blog.index') }}">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('services.*') ? 'active' : '' }}" 
-                               href="{{ route('services.index') }}">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('contact.*') ? 'active' : '' }}" 
-                               href="{{ route('contact.index') }}">Contact</a>
-                        </li>
-                    </ul>
+                <!-- Desktop menu -->
+                <div class="hidden md:flex md:items-center md:space-x-6">
+                    <a href="{{ route('home') }}" class="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('home') ? 'bg-indigo-800' : '' }}">Home</a>
+                    <a href="{{ route('about') }}" class="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('about') ? 'bg-indigo-800' : '' }}">About</a>
+                    <a href="{{ route('services.index') }}" class="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('services.*') ? 'bg-indigo-800' : '' }}">Services</a>
+                    <a href="{{ route('blog.index') }}" class="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('blog.*') ? 'bg-indigo-800' : '' }}">Blog</a>
+                    <a href="{{ route('contact.index') }}" class="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('contact.*') ? 'bg-indigo-800' : '' }}">Contact</a>
+                </div>
+            </div>
+
+            <!-- Mobile menu, show/hide based on menu state -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="{{ route('home') }}" class="text-white hover:bg-indigo-800 block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('home') ? 'bg-indigo-800' : '' }}">Home</a>
+                    <a href="{{ route('about') }}" class="text-white hover:bg-indigo-800 block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('about') ? 'bg-indigo-800' : '' }}">About</a>
+                    <a href="{{ route('services.index') }}" class="text-white hover:bg-indigo-800 block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('services.*') ? 'bg-indigo-800' : '' }}">Services</a>
+                    <a href="{{ route('blog.index') }}" class="text-white hover:bg-indigo-800 block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('blog.*') ? 'bg-indigo-800' : '' }}">Blog</a>
+                    <a href="{{ route('contact.index') }}" class="text-white hover:bg-indigo-800 block px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('contact.*') ? 'bg-indigo-800' : '' }}">Contact</a>
                 </div>
             </div>
         </nav>
@@ -68,42 +71,53 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-5">
-        <div class="container">
-            <div class="row gy-4">
-                <div class="col-md-4">
-                    <h5 class="fw-bold mb-3">Aj Group</h5>
-                    <p class="mb-3">Your Friendly Guide to the Future of AI</p>
-                    <div class="fs-4">
-                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-github"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Alaa M. Jaddou</h3>
+                    <p class="mb-4">Senior Software Engineer</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/alaa-m-jaddou-92310098/" target="_blank" class="text-gray-300 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/alaajaddou" target="_blank" class="text-gray-300 hover:text-white"><i class="fab fa-github"></i></a>
+{{--                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-youtube"></i></a>--}}
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <h5 class="fw-bold mb-3">Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="{{ route('home') }}" class="text-white text-decoration-none">Home</a></li>
-                        <li class="mb-2"><a href="{{ route('about') }}" class="text-white text-decoration-none">About</a></li>
-                        <li class="mb-2"><a href="{{ route('blog.index') }}" class="text-white text-decoration-none">Blog</a></li>
-                        <li class="mb-2"><a href="{{ route('services.index') }}" class="text-white text-decoration-none">Services</a></li>
-                        <li class="mb-2"><a href="{{ route('contact.index') }}" class="text-white text-decoration-none">Contact</a></li>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{{ route('home') }}" class="text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="{{ route('about') }}" class="text-gray-300 hover:text-white">About</a></li>
+                        <li><a href="{{ route('blog.index') }}" class="text-gray-300 hover:text-white">Blog</a></li>
+                        <li><a href="{{ route('services.index') }}" class="text-gray-300 hover:text-white">Services</a></li>
+                        <li><a href="{{ route('contact.index') }}" class="text-gray-300 hover:text-white">Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <h5 class="fw-bold mb-3">Contact</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@aj-group.ps</li>
-                        <li class="mb-2"><i class="fas fa-phone me-2"></i> +972569410116</li>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li><i class="fas fa-envelope mr-2"></i> <a href="mailto:info@aj-group.ps">info@aj-group.ps</a></li>
+                        <li><i class="fab fa-whatsapp mr-2"></i> <a href="https://wa.me/972569410116" class="hover:text-white">+972569410116</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="text-center pt-4 mt-4 border-top border-secondary">
-                <p class="mb-0">&copy; {{ date('Y') }} Aj Group. All rights reserved.</p>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; {{ date('Y') }} Alaa M. Jaddou. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Mobile menu toggle script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
 
     <!-- Google reCAPTCHA -->
     <script src="https://www.google.com/recaptcha/api.js?render={{ config('captcha.site_key') }}"></script>

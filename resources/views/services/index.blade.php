@@ -1,106 +1,92 @@
 @extends('layouts.app')
 
-@section('title', 'Services - Alaa M. Jaddou')
-@section('meta_description', 'Explore AI-related services offered by Alaa M. Jaddou including AI consulting, custom development, training, and more.')
-@section('og_title', 'Services - Alaa M. Jaddou')
-@section('og_description', 'Explore AI-related services offered by Alaa M. Jaddou including AI consulting, custom development, training, and more.')
+@section('title', 'Services - Alaa M. Jaddou - Senior Software Engineer')
+@section('meta_description', 'Professional services offered by Alaa M. Jaddou including Frontend Development, AI Project Consultation, and ERP Solutions.')
+@section('og_title', 'Services - Alaa M. Jaddou - Senior Software Engineer')
+@section('og_description', 'Professional services offered by Alaa M. Jaddou including Frontend Development, AI Project Consultation, and ERP Solutions.')
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container text-center">
-            <h1>Services</h1>
-            <p>Expert AI solutions tailored to your needs</p>
+    <section class="py-16 bg-indigo-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl font-bold mb-4">Professional Services</h1>
+            <p class="text-xl">Expert software solutions tailored to your needs</p>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="section">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <p class="lead">I offer a range of AI-related services to help individuals and businesses leverage the power of artificial intelligence. Whether you're looking to implement AI in your business, need custom development, or want to learn more about AI, I'm here to help.</p>
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center mb-12">
+                <div class="w-full lg:w-2/3 text-center">
+                    <p class="text-lg text-gray-700">With over 12 years of experience in software development, I offer a range of professional services to help businesses and individuals achieve their technology goals. Whether you need a modern website, ERP solutions, or AI project consultation, I'm here to help.</p>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @if($services->count() > 0)
                     @foreach($services as $service)
-                        <div class="col-md-6 col-lg-4 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body text-center">
-                                    @if($service->icon)
-                                        <i class="{{ $service->icon }} fa-3x mb-3 text-primary"></i>
-                                    @else
-                                        <i class="fas fa-robot fa-3x mb-3 text-primary"></i>
-                                    @endif
-                                    <h3 class="card-title h4">{{ $service->title }}</h3>
-                                    <p class="card-text">{{ $service->description }}</p>
-                                    <a href="{{ route('services.show', $service->slug) }}" class="btn btn-primary">Learn More</a>
-                                </div>
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                            <div class="p-6 text-center">
+                                @if($service->icon)
+                                    <i class="{{ $service->icon }} text-4xl mb-4 text-indigo-600"></i>
+                                @else
+                                    <i class="fas fa-code text-4xl mb-4 text-indigo-600"></i>
+                                @endif
+                                <h3 class="text-xl font-semibold mb-3 text-gray-800">{{ $service->title }}</h3>
+                                <p class="mb-6 text-gray-600">{{ $service->description }}</p>
+                                <a href="{{ route('services.show', $service->slug) }}" class="inline-block py-2 px-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition duration-300">Learn More</a>
                             </div>
                         </div>
                     @endforeach
                 @else
                     <!-- Default services if none in database -->
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-brain fa-3x mb-3 text-primary"></i>
-                                <h3 class="card-title h4">AI Consulting</h3>
-                                <p class="card-text">Expert guidance on implementing AI solutions for your business needs. I'll help you identify opportunities, evaluate technologies, and develop a strategic roadmap.</p>
-                                <a href="#" class="btn btn-primary">Learn More</a>
-                            </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                        <div class="p-6 text-center">
+                            <i class="fas fa-code text-4xl mb-4 text-indigo-600"></i>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">Frontend Development</h3>
+                            <p class="mb-6 text-gray-600">Modern, responsive web applications built with the latest frontend technologies. I specialize in creating intuitive user interfaces that provide exceptional user experiences.</p>
+                            <a href="#" class="inline-block py-2 px-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-code fa-3x mb-3 text-primary"></i>
-                                <h3 class="card-title h4">Custom AI Development</h3>
-                                <p class="card-text">Tailored AI solutions designed and developed to solve your specific challenges. From machine learning models to natural language processing systems.</p>
-                                <a href="#" class="btn btn-primary">Learn More</a>
-                            </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                        <div class="p-6 text-center">
+                            <i class="fas fa-brain text-4xl mb-4 text-indigo-600"></i>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">AI Project Consultation</h3>
+                            <p class="mb-6 text-gray-600">Expert guidance on implementing AI solutions for your business needs. I'll help you identify opportunities, evaluate technologies, and develop a strategic roadmap for AI integration.</p>
+                            <a href="#" class="inline-block py-2 px-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-chalkboard-teacher fa-3x mb-3 text-primary"></i>
-                                <h3 class="card-title h4">AI Training & Workshops</h3>
-                                <p class="card-text">Comprehensive training programs to help your team understand and leverage AI. Customized workshops for technical and non-technical audiences.</p>
-                                <a href="#" class="btn btn-primary">Learn More</a>
-                            </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                        <div class="p-6 text-center">
+                            <i class="fas fa-database text-4xl mb-4 text-indigo-600"></i>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">ERP Solutions</h3>
+                            <p class="mb-6 text-gray-600">Comprehensive ERP implementation and customization to streamline your business operations. With 6 years of experience in ERP systems, I can help improve efficiency and productivity.</p>
+                            <a href="#" class="inline-block py-2 px-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-search fa-3x mb-3 text-primary"></i>
-                                <h3 class="card-title h4">AI Research</h3>
-                                <p class="card-text">In-depth research on AI topics relevant to your business. Stay ahead of the curve with insights on emerging technologies and trends.</p>
-                                <a href="#" class="btn btn-primary">Learn More</a>
-                            </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                        <div class="p-6 text-center">
+                            <i class="fas fa-laptop-code text-4xl mb-4 text-indigo-600"></i>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">Website Development</h3>
+                            <p class="mb-6 text-gray-600">Custom website development with a focus on performance, accessibility, and user experience. From simple landing pages to complex web applications, I deliver high-quality solutions.</p>
+                            <a href="#" class="inline-block py-2 px-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-robot fa-3x mb-3 text-primary"></i>
-                                <h3 class="card-title h4">Chatbot Development</h3>
-                                <p class="card-text">Custom chatbots and conversational AI solutions to enhance customer service, automate tasks, and improve user experience.</p>
-                                <a href="#" class="btn btn-primary">Learn More</a>
-                            </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                        <div class="p-6 text-center">
+                            <i class="fas fa-paint-brush text-4xl mb-4 text-indigo-600"></i>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">UI/UX Design</h3>
+                            <p class="mb-6 text-gray-600">User interface and experience design that combines aesthetics with functionality. Drawing on my graphic design background, I create interfaces that are both beautiful and intuitive.</p>
+                            <a href="#" class="inline-block py-2 px-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-chart-line fa-3x mb-3 text-primary"></i>
-                                <h3 class="card-title h4">AI-Powered Analytics</h3>
-                                <p class="card-text">Advanced analytics solutions that leverage machine learning to extract insights from your data and drive better business decisions.</p>
-                                <a href="#" class="btn btn-primary">Learn More</a>
-                            </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                        <div class="p-6 text-center">
+                            <i class="fas fa-cogs text-4xl mb-4 text-indigo-600"></i>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">CMS Development</h3>
+                            <p class="mb-6 text-gray-600">Custom content management system development and implementation. I build systems that make it easy for you to manage and update your website content without technical expertise.</p>
+                            <a href="#" class="inline-block py-2 px-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
                 @endif
@@ -108,14 +94,47 @@
         </div>
     </section>
 
+    <!-- Process Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">My Process</h2>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">I follow a structured approach to ensure your project is delivered successfully</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Discovery</h3>
+                    <p class="text-gray-600">Understanding your requirements, goals, and challenges to create a tailored solution.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Planning</h3>
+                    <p class="text-gray-600">Creating a detailed roadmap with timelines, milestones, and deliverables.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Development</h3>
+                    <p class="text-gray-600">Building your solution with regular updates and opportunities for feedback.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Delivery & Support</h3>
+                    <p class="text-gray-600">Launching your solution and providing ongoing support to ensure success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
-    <section class="section bg-light">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h2 class="mb-4">Ready to Get Started?</h2>
-                    <p class="lead mb-4">Let's discuss how AI can transform your business or project. Contact me for a free consultation.</p>
-                    <a href="{{ route('contact.index') }}" class="btn btn-primary btn-lg">Get in Touch</a>
+    <section class="py-16 bg-indigo-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center">
+                <div class="w-full lg:w-2/3 text-center">
+                    <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+                    <p class="text-xl mb-8">Let's discuss how I can help bring your ideas to life with modern software solutions.</p>
+                    <a href="{{ route('contact.index') }}" class="inline-block py-3 px-8 bg-white text-indigo-700 hover:bg-gray-100 rounded-lg text-lg font-medium shadow-md transition duration-300">Get in Touch</a>
                 </div>
             </div>
         </div>
