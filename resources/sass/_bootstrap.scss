@@ -1,5 +1,11 @@
 // You can override Bootstrap variables here
-// $primary: #ff5733;
+$primary: #3498db;    // Blue
+$secondary: #8e44ad;  // Purple
+$success: #27ae60;    // Green
+$info: #f39c12;       // Orange
+$warning: #e74c3c;    // Red
+$light: #ecf0f1;      // Light Gray
+$dark: #2c3e50;       // Dark Blue
 
 // Then import the rest of Bootstrap
 @use 'bootstrap/scss/bootstrap';
