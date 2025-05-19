@@ -23,18 +23,32 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('source_name')
-                    ->required()
-                    ->maxLength(255),
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('url')
-                    ->required()
-                    ->columnSpanFull(),
                 Forms\Components\Textarea::make('content')
                     ->required()
-                    ->columnSpanFull()
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('url')
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('source_name')
+                    ->maxLength(255),
+                Forms\Components\DateTimePicker::make('published_at'),
+                Forms\Components\TextInput::make('slug')
+                    ->maxLength(255)
+                    ->disabled()
+                    ->dehydrated(false)
+                    ->helperText('This will be automatically generated from the title. It will update if you change the title.'),
+                Forms\Components\Textarea::make('excerpt')
+                    ->columnSpanFull(),
+                Forms\Components\FileUpload::make('featured_image')
+                    ->image(),
+                Forms\Components\Toggle::make('is_featured')
+                    ->required(),
+                Forms\Components\TextInput::make('author_name')
+                    ->maxLength(255),
+                Forms\Components\Toggle::make('is_published')
+                    ->required(),
             ]);
     }
 
@@ -57,6 +71,15 @@ class PostResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('slug')
+                    ->searchable(),
+                Tables\Columns\ImageColumn::make('featured_image'),
+                Tables\Columns\IconColumn::make('is_featured')
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('author_name')
+                    ->searchable(),
+                Tables\Columns\IconColumn::make('is_published')
+                    ->boolean(),
             ])
             ->filters([
                 //

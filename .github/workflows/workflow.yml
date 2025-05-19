@@ -31,4 +31,13 @@ jobs:
             npm i
             npm run build
             php artisan migrate --seed
+
+            # Generate Filament resources for all missing models
+            for model in $(find app/Models -name "*.php" -exec basename {} \; | sed 's/\.php//'); do
+              if [ ! -f "app/Filament/Resources/${model}Resource.php" ]; then
+                echo "Generating Filament resource for $model"
+                php artisan make:filament-resource $model --generate --no-interaction
+              fi
+            done
+
             bash -x ./cache.sh

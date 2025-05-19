@@ -11,6 +11,17 @@ use App\Mail\ContactNotification;
 
 class ContactController extends Controller
 {
+    /**
+     * Display the contact form.
+     */
+    public function index()
+    {
+        return view('contact.index');
+    }
+
+    /**
+     * Handle the contact form submission.
+     */
 	public function submit(Request $request)
 	{
 		$validated = $request->validate([
@@ -44,7 +55,6 @@ class ContactController extends Controller
 		Mail::to('info@aj-group.ps')
 			->send(new ContactNotification($contact));
 
-
-		return redirect()->route('home')->with('success', 'Thank you for your message. We will contact you soon!');
+		return redirect()->route('contact.index')->with('success', 'Thank you for your message. We will contact you soon!');
 	}
 }

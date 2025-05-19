@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>New Contact Message - Aj Group</title>
+    <title>New Contact Message - Alaa M. Jaddou</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -37,7 +37,7 @@
 <body>
 <div class="email-container">
     <h1>New Contact Message</h1>
-    <p>You’ve received a new message from the contact form on your website.</p>
+    <p>You've received a new message from the contact form on your website.</p>
 
     <div class="info">
         <p><strong>Name:</strong> {{ $contact->name }}</p>
@@ -46,7 +46,7 @@
         <p>{{ $contact->message }}</p>
     </div>
 
-    <p class="footer">This message was sent from the contact form on <strong>aj-group.ps</strong>.</p>
+    <p class="footer">This message was sent from the contact form on <strong>alaajaddou.com</strong>.</p>
 </div>
 </body>
 </html>

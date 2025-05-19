@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\PlansController;
+use App\Http\Controllers\API\SettingsController;
 use App\Http\Controllers\NewsController;
 use App\Services\PostFetcher;
 use Illuminate\Support\Facades\Route;
 
+// Legacy routes
 Route::prefix('v1')->group(function () {
     Route::get('/news', [NewsController::class, 'index']);
 
@@ -13,20 +17,38 @@ Route::prefix('v1')->group(function () {
     });
 });
 
+// Authentication routes
+Route::group(['prefix' => 'api', 'middleware' => ['app.token']], function () {
+    // Public authentication endpoints
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
 
-Route::post('/login', function () {
-    $credentials = request()->only('email', 'password');
+    // Social authentication
+    Route::get('/social-login/{provider}', [AuthController::class, 'socialRedirect']);
+    Route::get('/social-callback/{provider}', [AuthController::class, 'socialCallback']);
 
-    if (auth()::attempt($credentials)) {
-        $user = auth()::user();
-        $token = $user->createToken('Access Token')->accessToken;
+    // Protected authentication endpoints
+    Route::middleware('auth:api')->group(function () {
+        Route::post('/token/refresh', [AuthController::class, 'refreshToken']);
+        Route::get('/verify', [AuthController::class, 'verify']);
+        Route::post('/logout', [AuthController::class, 'logout']);
 
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'user' => $user,
-        ]);
-    }
+        // Settings and preferences
+        Route::get('/settings', [SettingsController::class, 'index']);
+        Route::get('/settings/category/{category}', [SettingsController::class, 'getByCategory']);
+        Route::post('/settings/update', [SettingsController::class, 'updatePreferences']);
+        Route::post('/settings/reset', [SettingsController::class, 'resetPreferences']);
 
-    return response()->json(['error' => 'Unauthorized'], 401);
+        // Plans management - Admin only routes
+        Route::middleware('can:manage-plans')->group(function () {
+            Route::post('/plans', [PlansController::class, 'store']);
+            Route::put('/plans/{id}', [PlansController::class, 'update']);
+            Route::delete('/plans/{id}', [PlansController::class, 'destroy']);
+        });
+    });
+
+    // Public plans routes (still require app token)
+    Route::get('/plans', [PlansController::class, 'index']);
+    Route::get('/plans/search', [PlansController::class, 'search']);
+    Route::get('/plans/{slug}', [PlansController::class, 'show']);
 });
