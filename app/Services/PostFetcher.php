@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Source;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use willvincent\Feeds\Facades\FeedsFacade;
 
 class PostFetcher
@@ -53,6 +54,8 @@ class PostFetcher
 						? Carbon::parse($item->{$mapping['published_at']}('Y-m-d H:i:s'))
 						: now(),
 				];
+
+				$post['slug'] = Str::slug($post['title']);
 
 				Log::info("Check if post after the date.");
 				if (isset($source->published_at) && $post['published_at'] . lessThanOrEqualTo($source->published_at)) {
