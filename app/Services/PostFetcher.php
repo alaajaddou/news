@@ -38,6 +38,8 @@ class PostFetcher
 			$newCount = 0;
 
 			foreach ($items as $item) {
+				
+				Log::info("Checking if post already exists");
 				$url = method_exists($item, $mapping['url']) ? $item->{$mapping['url']}() : null;
 				Log::info("Received $url");
 				if (!$url || Post::where('url', $url)->exists()) {
@@ -53,6 +55,9 @@ class PostFetcher
 					'published_at' => isset($mapping['published_at']) && method_exists($item, $mapping['published_at'])
 						? Carbon::parse($item->{$mapping['published_at']}('Y-m-d H:i:s'))
 						: now(),
+					'featured_image' => isset($mapping['image']) && method_exists($item, $mapping['image'])
+						? $item->{$mapping['image']}()
+						: null,
 				];
 
 				$post['slug'] = Str::slug($post['title']);
