@@ -24,6 +24,8 @@
                             <div class="bg-white rounded-lg shadow-md mb-8 overflow-hidden">
                                 <div class="flex flex-wrap">
                                     <div class="w-full md:w-1/3">
+
+                                        @dd(route('blog.show', $post))
                                         @if($post->featured_image)
                                             <a href="{{ route('blog.show', $post) }}">
                                                 <img src="{{ $post->featured_image }}" class="w-full h-full object-cover rounded-tl-lg md:rounded-bl-lg" alt="{{ $post->title }}">
