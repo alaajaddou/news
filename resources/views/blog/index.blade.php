@@ -25,13 +25,12 @@
                                 <div class="flex flex-wrap">
                                     <div class="w-full md:w-1/3">
 
-                                        @dd(route('blog.show', $post))
                                         @if($post->featured_image)
                                             <a href="{{ route('blog.show', $post) }}">
                                                 <img src="{{ $post->featured_image }}" class="w-full h-full object-cover rounded-tl-lg md:rounded-bl-lg" alt="{{ $post->title }}">
                                             </a>
                                         @else
-                                            <a href="{{ route('blog.show', ['post' => $post]) }}">
+                                            <a href="{{ route('blog.show', $post) }}">
                                                 <img src="https://via.placeholder.com/300x200?text=Alaa+M.+Jaddou" class="w-full h-full object-cover rounded-tl-lg md:rounded-bl-lg" alt="{{ $post->title }}">
                                             </a>
                                         @endif
