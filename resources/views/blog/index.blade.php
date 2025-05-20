@@ -25,11 +25,11 @@
                                 <div class="flex flex-wrap">
                                     <div class="w-full md:w-1/3">
                                         @if($post->featured_image)
-                                            <a href="{{ route('blog.show', ['post' => $post->slug]) }}">
+                                            <a href="{{ route('blog.show', $post) }}">
                                                 <img src="{{ $post->featured_image }}" class="w-full h-full object-cover rounded-tl-lg md:rounded-bl-lg" alt="{{ $post->title }}">
                                             </a>
                                         @else
-                                            <a href="{{ route('blog.show', ['post' => $post->slug]) }}">
+                                            <a href="{{ route('blog.show', $post) }}">
                                                 <img src="https://via.placeholder.com/300x200?text=Alaa+M.+Jaddou" class="w-full h-full object-cover rounded-tl-lg md:rounded-bl-lg" alt="{{ $post->title }}">
                                             </a>
                                         @endif
@@ -41,17 +41,17 @@
 
                                             <div class="mb-4">
                                                 @foreach($post->categories as $category)
-                                                    <a href="{{ route('blog.category', $category->slug) }}" class="inline-block bg-amber-500 text-white text-xs px-2 py-1 rounded mr-1 mb-1">{{ $category->name }}</a>
+                                                    <a href="{{ route('blog.category', $category) }}" class="inline-block bg-amber-500 text-white text-xs px-2 py-1 rounded mr-1 mb-1">{{ $category->name }}</a>
                                                 @endforeach
 
                                                 @foreach($post->tags as $tag)
-                                                    <a href="{{ route('blog.tag', $tag->slug) }}" class="inline-block bg-gray-500 text-white text-xs px-2 py-1 rounded mr-1 mb-1">{{ $tag->name }}</a>
+                                                    <a href="{{ route('blog.tag', $tag) }}" class="inline-block bg-gray-500 text-white text-xs px-2 py-1 rounded mr-1 mb-1">{{ $tag->name }}</a>
                                                 @endforeach
                                             </div>
 
                                             <div class="flex justify-between items-center">
                                                 <small class="text-gray-500">{{ $post->published_at->format('M d, Y') }}</small>
-                                                <a href="{{ route('blog.show', ['post' => $post->slug]) }}" class="inline-block py-1 px-3 bg-amber-500 hover:bg-amber-600 text-white text-sm rounded">Read More</a>
+                                                <a href="{{ route('blog.show', $post) }}" class="inline-block py-1 px-3 bg-amber-500 hover:bg-amber-600 text-white text-sm rounded">Read More</a>
                                             </div>
                                         </div>
                                     </div>
@@ -86,7 +86,7 @@
                                 <ul class="divide-y divide-gray-200">
                                     @foreach($categories as $category)
                                         <li class="py-3 flex justify-between items-center">
-                                            <a href="{{ route('blog.category', $category->slug) }}" class="text-gray-700 hover:text-amber-500">{{ $category->name }}</a>
+                                            <a href="{{ route('blog.category', $category) }}" class="text-gray-700 hover:text-amber-500">{{ $category->name }}</a>
                                             <span class="bg-amber-500 text-white text-xs px-2 py-1 rounded-full">{{ $category->posts_count }}</span>
                                         </li>
                                     @endforeach
@@ -109,7 +109,7 @@
                             @if($tags->count() > 0)
                                 <div class="flex flex-wrap gap-2">
                                     @foreach($tags as $tag)
-                                        <a href="{{ route('blog.tag', $tag->slug) }}" class="inline-block bg-gray-500 text-white text-xs px-2 py-1 rounded hover:bg-gray-600">{{ $tag->name }}</a>
+                                        <a href="{{ route('blog.tag', $tag) }}" class="inline-block bg-gray-500 text-white text-xs px-2 py-1 rounded hover:bg-gray-600">{{ $tag->name }}</a>
                                     @endforeach
                                 </div>
                             @else
