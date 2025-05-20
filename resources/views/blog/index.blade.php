@@ -25,11 +25,11 @@
                                 <div class="flex flex-wrap">
                                     <div class="w-full md:w-1/3">
                                         @if($post->featured_image)
-                                            <a href="{{ route('blog.show', $post->slug) }}">
+                                            <a href="{{ route('blog.show', ['post' => $post->slug]) }}">
                                                 <img src="{{ $post->featured_image }}" class="w-full h-full object-cover rounded-tl-lg md:rounded-bl-lg" alt="{{ $post->title }}">
                                             </a>
                                         @else
-                                            <a href="{{ route('blog.show', $post->slug) }}">
+                                            <a href="{{ route('blog.show', ['post' => $post->slug]) }}">
                                                 <img src="https://via.placeholder.com/300x200?text=Alaa+M.+Jaddou" class="w-full h-full object-cover rounded-tl-lg md:rounded-bl-lg" alt="{{ $post->title }}">
                                             </a>
                                         @endif
@@ -51,7 +51,7 @@
 
                                             <div class="flex justify-between items-center">
                                                 <small class="text-gray-500">{{ $post->published_at->format('M d, Y') }}</small>
-                                                <a href="{{ route('blog.show', $post->slug) }}" class="inline-block py-1 px-3 bg-amber-500 hover:bg-amber-600 text-white text-sm rounded">Read More</a>
+                                                <a href="{{ route('blog.show', ['post' => $post->slug]) }}" class="inline-block py-1 px-3 bg-amber-500 hover:bg-amber-600 text-white text-sm rounded">Read More</a>
                                             </div>
                                         </div>
                                     </div>
