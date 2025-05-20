@@ -29,7 +29,7 @@
                                                 <img src="{{ $post->featured_image }}" class="w-full h-full object-cover rounded-tl-lg md:rounded-bl-lg" alt="{{ $post->title }}">
                                             </a>
                                         @else
-                                            <a href="{{ route('blog.show', $post) }}">
+                                            <a href="{{ route('blog.show', ['post' => $post]) }}">
                                                 <img src="https://via.placeholder.com/300x200?text=Alaa+M.+Jaddou" class="w-full h-full object-cover rounded-tl-lg md:rounded-bl-lg" alt="{{ $post->title }}">
                                             </a>
                                         @endif
