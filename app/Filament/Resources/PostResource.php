@@ -6,6 +6,7 @@ use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
 use Filament\Forms;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -21,15 +22,16 @@ class PostResource extends Resource
 
     public static function form(Form $form): Form
     {
+		
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\RichEditor::make('content')
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('url')
+	            MarkdownEditor::make('content')
+		            ->required()
+		            ->columnSpanFull(),
+	            Forms\Components\TextInput::make('url')
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('source_name')
                     ->maxLength(255),
