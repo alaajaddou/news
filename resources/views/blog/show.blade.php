@@ -134,7 +134,7 @@
                     @endif
 
                     <div class="post-content mb-5">
-                        {!! $post->content !!}
+                        {!! str($post->content)->markdown()->sanitizeHtml() !!}
                     </div>
 
                     <!-- Tags -->
