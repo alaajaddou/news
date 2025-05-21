@@ -26,10 +26,10 @@ class PostResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Textarea::make('content')
+                Forms\Components\RichEditor::make('content')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\Textarea::make('url')
+                Forms\Components\TextInput::make('url')
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('source_name')
                     ->maxLength(255),

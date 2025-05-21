@@ -134,7 +134,7 @@
                     @endif
 
                     <div class="post-content mb-5">
-                        {!! Str::markdown($post->content) !!}
+                        {!! $post->content !!}
                     </div>
 
                     <!-- Tags -->
