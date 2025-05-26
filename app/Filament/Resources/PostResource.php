@@ -46,7 +46,7 @@ class PostResource extends Resource
                 Forms\Components\FileUpload::make('featured_image')
 	                ->label('Featured Image')
 	                ->image()
-	                ->directory('posts')
+	                ->directory('storage/posts')
 	                ->maxSize(8192) // 8MB or adjust as needed
 	                ->rules(['image', 'max:8192']),
                 Forms\Components\Toggle::make('is_featured')

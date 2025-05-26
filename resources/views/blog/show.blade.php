@@ -176,7 +176,7 @@
                 <div class="col-lg-8">
                     @if($post->featured_image)
                         <img
-                                src="{{ url('storage/' . $post->featured_image) }}"
+                                src="{{ $post->featured_image }}"
                                 alt="{{ $post->title }}"
                                 class="mx-auto my-10 w-full max-w-4xl rounded-xl shadow-lg transition-transform duration-300 hover:scale-105"
                         />
