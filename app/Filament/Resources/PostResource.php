@@ -44,7 +44,11 @@ class PostResource extends Resource
                 Forms\Components\Textarea::make('excerpt')
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('featured_image')
-                    ->image(),
+	                ->label('Featured Image')
+	                ->image()
+	                ->directory('posts')
+	                ->maxSize(8192) // 8MB or adjust as needed
+	                ->rules(['image', 'mimes:jpg,jpeg,png,webp', 'max:8192']),
                 Forms\Components\Toggle::make('is_featured')
                     ->required(),
                 Forms\Components\TextInput::make('author_name')
