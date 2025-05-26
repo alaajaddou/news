@@ -25,7 +25,7 @@
                                 <div class="row g-0">
                                     <div class="col-md-4">
                                         @if($post->featured_image)
-                                            <img src="{{ url($post->featured_image) }}" class="img-fluid rounded-start h-100 w-100 object-fit-cover" alt="{{ $post->title }}">
+                                            <img src="{{ url('storage/' . $post->featured_image) }}" class="img-fluid rounded-start h-100 w-100 object-fit-cover" alt="{{ $post->title }}">
                                         @else
                                             <img src="https://via.placeholder.com/300x200?text=Alaa+M.+Jaddou" class="img-fluid rounded-start h-100 w-100 object-fit-cover" alt="{{ $post->title }}">
                                         @endif

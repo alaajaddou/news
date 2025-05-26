@@ -26,7 +26,7 @@
                                     <div class="col-md-4">
                                         @if($post->featured_image)
                                             <a href="{{ route('blog.show', $post->slug) }}">
-                                                <img src="{{ url($post->featured_image) }}" class="img-fluid rounded-start w-100 object-fit-cover" alt="{{ $post->title }}">
+                                                <img src="{{ url('storage/' . $post->featured_image) }}" class="img-fluid rounded-start w-100 object-fit-cover" alt="{{ $post->title }}">
                                             </a>
                                         @else
                                             <a href="{{ route('blog.show', $post->slug) }}">
