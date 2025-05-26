@@ -4,7 +4,7 @@
 @section('meta_description', $post->excerpt ?? Str::limit(strip_tags($post->content), 160))
 @section('og_title', $post->title . ' - Alaa M. Jaddou')
 @section('og_description', $post->excerpt ?? Str::limit(strip_tags($post->content), 160))
-@section('og_image', $post->featured_image ?? asset('images/alaa-m-jaddou-logo.png'))
+@section('og_image', url($post->featured_image) ?? asset('images/alaa-m-jaddou-logo.png'))
 
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
@@ -176,7 +176,7 @@
                 <div class="col-lg-8">
                     @if($post->featured_image)
                         <img
-                                src="{{ $post->featured_image }}"
+                                src="{{ url($post->featured_image) }}"
                                 alt="{{ $post->title }}"
                                 class="mx-auto my-10 w-full max-w-4xl rounded-xl shadow-lg transition-transform duration-300 hover:scale-105"
                         />

@@ -122,7 +122,7 @@
                     @foreach($featuredPosts as $post)
                         <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
                             @if($post->featured_image)
-                                <img src="{{ $post->featured_image }}" class="w-full h-48 object-cover" alt="{{ $post->title }}">
+                                <img src="{{ url($post->featured_image) }}" class="w-full h-48 object-cover" alt="{{ $post->title }}">
                             @else
                                 <img src="https://via.placeholder.com/600x400?text=Alaa+M.+Jaddou" class="w-full h-48 object-cover" alt="{{ $post->title }}">
                             @endif

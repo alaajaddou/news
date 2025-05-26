@@ -27,7 +27,7 @@
 
                                         @if($post->featured_image)
                                             <a href="{{ route('blog.show', $post) }}">
-                                                <img src="{{ $post->featured_image }}" class="w-full h-full object-cover rounded-tl-lg md:rounded-bl-lg" alt="{{ $post->title }}">
+                                                <img src="{{ url($post->featured_image) }}" class="w-full h-full object-cover rounded-tl-lg md:rounded-bl-lg" alt="{{ $post->title }}">
                                             </a>
                                         @else
                                             <a href="{{ route('blog.show', $post) }}">
