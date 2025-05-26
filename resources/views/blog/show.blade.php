@@ -94,13 +94,55 @@
         .linkedin-bg {
             background-color: #0077B5;
         }
+        .post-header {
+            text-align: center;
+            background: linear-gradient(to right, #f8fafc, #e2e8f0);
+            padding: 3rem 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .post-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .post-header .badge {
+            font-size: 0.9rem;
+            padding: 0.5em 0.75em;
+            border-radius: 0.25rem;
+        }
+
+        .post-header .text-muted {
+            font-size: 0.95rem;
+            color: #6c757d !important;
+        }
+
+
+        @media (prefers-color-scheme: light) {
+            .post-content pre {
+                background-color: #1e1e1e;
+                color: #dcdcdc;
+            }
+
+            .post-content code {
+                color: #dcdcdc;
+            }
+
+            .post-content blockquote {
+                border-left-color: #eab308; /* amber */
+                color: #d1d5db; /* gray-300 */
+            }
+        }
+
     </style>
 @endsection
 
 @section('content')
     <!-- Post Header -->
-    <header class="py-5 bg-light">
-        <div class="container">
+    <header class="py-5 bg-light post-header">
+        <article itemscope itemtype="https://schema.org/Article" class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="mb-4">
@@ -108,7 +150,10 @@
                             <a href="{{ route('blog.category', $category->slug) }}" class="badge bg-primary text-decoration-none me-1">{{ $category->name }}</a>
                         @endforeach
                     </div>
-                    <h1 class="fw-bold mb-3">{{ $post->title }}</h1>
+
+                    <h1 itemprop="headline" class="fw-bold mb-3">{{ $post->title }}</h1>
+                    <meta itemprop="datePublished" content="{{ $post->published_at->toIso8601String() }}">
+                    <meta itemprop="author" content="{{ $post->author_name }}">
                     <div class="d-flex align-items-center mb-4">
                         <div>
                             <p class="text-muted mb-0">
@@ -121,21 +166,27 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </article>
     </header>
 
     <!-- Post Content -->
-    <section class="section">
+    <section class="section post-content">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     @if($post->featured_image)
-                        <img src="{{ $post->featured_image }}" alt="{{ $post->title }}" class="img-fluid rounded shadow mb-5">
+                        <img
+                                src="{{ url('storage/' . $post->featured_image) }}"
+                                alt="{{ $post->title }}"
+                                class="mx-auto my-10 w-full max-w-4xl rounded-xl shadow-lg transition-transform duration-300 hover:scale-105"
+                        />
+
+
                     @endif
 
-                    <div class="post-content mb-5">
-                        {!! str($post->content)->markdown()->sanitizeHtml() !!}
-                    </div>
+                            <div class="prose lg:prose-xl max-w-4xl mx-auto p-6 text-gray-800">
+                                {!! str($post->content)->markdown()->sanitizeHtml() !!}
+                            </div>
 
                     <!-- Tags -->
                     @if($post->tags->count() > 0)
@@ -146,51 +197,6 @@
                             @endforeach
                         </div>
                     @endif
-
-                    <!-- Social Share -->
-                    <div class="mb-5">
-                        <h5 class="mb-3">Share This Post</h5>
-                        <div class="social-share">
-                            <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode($post->title) }}" target="_blank" class="twitter-bg">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" target="_blank" class="facebook-bg">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url()->current()) }}" target="_blank" class="linkedin-bg">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Related Posts -->
-                    @if($relatedPosts->count() > 0)
-                        <div class="mb-5">
-                            <h3 class="mb-4">Related Posts</h3>
-                            <div class="row">
-                                @foreach($relatedPosts as $relatedPost)
-                                    <div class="col-md-4 mb-4">
-                                        <div class="card h-100">
-                                            @if($relatedPost->featured_image)
-                                                <img src="{{ $relatedPost->featured_image }}" class="card-img-top" alt="{{ $relatedPost->title }}">
-                                            @else
-                                                <img src="https://via.placeholder.com/300x200?text=Alaa+M.+Jaddou" class="card-img-top" alt="{{ $relatedPost->title }}">
-                                            @endif
-                                            <div class="card-body">
-                                                <h5 class="card-title">{{ $relatedPost->title }}</h5>
-                                                <a href="{{ route('blog.show', $relatedPost->slug) }}" class="btn btn-sm btn-primary">Read More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-
-                    <!-- Back to Blog -->
-                    <div class="text-center">
-                        <a href="{{ route('blog.index') }}" class="btn btn-primary">Back to Blog</a>
-                    </div>
                 </div>
             </div>
         </div>

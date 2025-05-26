@@ -3,7 +3,11 @@
 
     $statePath = $getStatePath();
 @endphp
-
+<style>
+    .EasyMDEContainer .editor-toolbar button:is(.dark *):before {
+        background-color: white;
+    }
+</style>
 <x-dynamic-component :component="$getFieldWrapperView()" :field="$field">
     @if ($isDisabled())
         <div
