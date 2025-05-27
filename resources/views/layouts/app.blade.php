@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="z/TLyFKWDR1n/g0mI8lW+A" async></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="@yield('meta_description', 'Alaa M. Jaddou - Senior Software Engineer')">
@@ -9,6 +11,7 @@
     <meta property="og:image" content="@yield('og_image', asset('images/alaa-jaddou-logo.png'))">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
+
     <title>@yield('title', 'Alaa M. Jaddou - Senior Software Engineer')</title>
 
     <!-- Fonts -->

@@ -129,7 +129,7 @@
                             <div class="p-6">
                                 <h3 class="text-xl font-semibold mb-3">{{ $post->title }}</h3>
                                 <p class="text-gray-600 mb-4">{{ $post->excerpt ?? Str::limit(strip_tags($post->content), 100) }}</p>
-                                <div class="flex justify-between items-center">
+                                <div class="flex justify-between items-center self-end">
                                     <span class="text-sm text-gray-500">{{ $post->published_at->format('M d, Y') }}</span>
                                     <a href="{{ route('blog.show', $post->slug) }}" class="text-indigo-600 hover:text-indigo-800 font-medium">Read More</a>
                                 </div>
