@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="z/TLyFKWDR1n/g0mI8lW+A" async></script>
-    <meta name="ahrefs-site-verification" content="9bd1d37348a6868876eaffc532f9f6b5042f8ea970de4f7f28b757de7f82a93f">
+    <meta name="ahrefs-site-verification" content="2ba4f7193c7df60fcbcaf2ed62d31dd972ed638336ef93c9a86d63b4d72b0876">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
