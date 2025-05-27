@@ -120,16 +120,16 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @if($featuredPosts->count() > 0)
                     @foreach($featuredPosts as $post)
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105 flex flex-col h-full">
                             @if($post->featured_image)
                                 <img src="{{ url('storage/' . $post->featured_image) }}" class="w-full h-48 object-cover" alt="{{ $post->title }}">
                             @else
                                 <img src="https://via.placeholder.com/600x400?text=Alaa+M.+Jaddou" class="w-full h-48 object-cover" alt="{{ $post->title }}">
                             @endif
-                            <div class="p-6">
+                            <div class="p-6 flex flex-col flex-1">
                                 <h3 class="text-xl font-semibold mb-3">{{ $post->title }}</h3>
                                 <p class="text-gray-600 mb-4">{{ $post->excerpt ?? Str::limit(strip_tags($post->content), 100) }}</p>
-                                <div class="flex justify-between items-center self-end">
+                                <div class="mt-auto flex justify-between items-center">
                                     <span class="text-sm text-gray-500">{{ $post->published_at->format('M d, Y') }}</span>
                                     <a href="{{ route('blog.show', $post->slug) }}" class="text-indigo-600 hover:text-indigo-800 font-medium">Read More</a>
                                 </div>
