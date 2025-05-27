@@ -171,35 +171,39 @@
 
     <!-- Post Content -->
     <section class="section post-content">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
+        <div class="px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center">
+                <div class="w-full max-w-4xl">
                     @if($post->featured_image)
                         <img
                                 src="{{ url('storage/' . $post->featured_image) }}"
                                 alt="{{ $post->title }}"
-                                class="mx-auto my-10 w-full max-w-4xl rounded-xl shadow-lg transition-transform duration-300 hover:scale-105"
+                                class="block mx-auto my-10 max-w-full rounded-xl shadow-lg transition-transform duration-300 hover:scale-105"
                         />
-
-
                     @endif
 
-                            <div class="prose lg:prose-xl max-w-4xl mx-auto p-6 text-gray-800">
-                                {!! str($post->content)->markdown()->sanitizeHtml() !!}
-                            </div>
+                    <div class="prose lg:prose-xl max-w-4xl mx-auto p-6 text-gray-800">
+                        {!! str($post->content)->markdown()->sanitizeHtml() !!}
+                    </div>
 
                     <!-- Tags -->
                     @if($post->tags->count() > 0)
-                        <div class="mb-5">
-                            <h5 class="mb-3">Tags</h5>
-                            @foreach($post->tags as $tag)
-                                <a href="{{ route('blog.tag', $tag->slug) }}" class="badge bg-secondary text-decoration-none me-1">{{ $tag->name }}</a>
-                            @endforeach
+                        <div class="mb-5 mt-6">
+                            <h5 class="text-lg font-semibold mb-3">Tags</h5>
+                            <div class="flex flex-wrap gap-2">
+                                @foreach($post->tags as $tag)
+                                    <a href="{{ route('blog.tag', $tag->slug) }}"
+                                       class="inline-block bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded hover:bg-gray-300 transition">
+                                        {{ $tag->name }}
+                                    </a>
+                                @endforeach
+                            </div>
                         </div>
                     @endif
                 </div>
             </div>
         </div>
+
     </section>
 @endsection
 
