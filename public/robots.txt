@@ -1,2 +1,4 @@
+Sitemap: https://aj-group.ps/sitemap.xml
+
 User-agent: *
 Disallow:

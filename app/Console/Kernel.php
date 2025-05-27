@@ -10,10 +10,7 @@ class Kernel extends ConsoleKernel
 {
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->call(function () {
-            Log::info('PostFetcher job running at ' . now());
-            app(PostFetcher::class)->fetchAllSources();
-        })->everyFifteenMinutes()->name('FetchPosts');
+	    $schedule->command('sitemap:generate')->daily();
     }
 
     protected function commands(): void
