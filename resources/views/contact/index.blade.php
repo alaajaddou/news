@@ -145,12 +145,6 @@
                                         <i class="fab fa-twitter text-indigo-600"></i>
                                     </div>
                                 </div>
-                                <div>
-                                    <h4 class="text-sm font-semibold mb-1 text-gray-700">Twitter</h4>
-                                    <p class="m-0">
-                                        <a href="#" class="text-gray-700 hover:text-indigo-600">@AlaaJaddou</a>
-                                    </p>
-                                </div>
                             </div>
 
                             <div class="flex mb-6">
@@ -162,7 +156,7 @@
                                 <div>
                                     <h4 class="text-sm font-semibold mb-1 text-gray-700">LinkedIn</h4>
                                     <p class="m-0">
-                                        <a href="#" class="text-gray-700 hover:text-indigo-600">linkedin.com/in/alaajaddou</a>
+                                        <a href="https://www.linkedin.com/in/alaa-m-jaddou-92310098/" target="_blank" class="text-gray-700 hover:text-indigo-600">linkedin.com/in/alaajaddou</a>
                                     </p>
                                 </div>
                             </div>
@@ -176,7 +170,7 @@
                                 <div>
                                     <h4 class="text-sm font-semibold mb-1 text-gray-700">GitHub</h4>
                                     <p class="m-0">
-                                        <a href="#" class="text-gray-700 hover:text-indigo-600">github.com/alaajaddou</a>
+                                        <a href="https://github.com/alaajaddou" target="_blank" class="text-gray-700 hover:text-indigo-600">github.com/alaajaddou</a>
                                     </p>
                                 </div>
                             </div>
