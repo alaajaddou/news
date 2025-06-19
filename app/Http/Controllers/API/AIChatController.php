@@ -14,7 +14,6 @@ class AIChatController extends Controller
 
 	public function proxy()
 	{
-		dd(request()->all());
 		try {
 			$validated = request()->validate([
 				'message' => 'required|string',
