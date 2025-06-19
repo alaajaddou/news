@@ -36,7 +36,9 @@ class AIChatController extends Controller
 
 			$response = Http::withHeaders([
 				'Content-Type' => 'application/json',
-			])->post(self::HTTPS_AI_AJ_GROUP_PS_API_CHAT, $messageBody);
+			])
+			->timeout(60) // seconds
+			->post(self::HTTPS_AI_AJ_GROUP_PS_API_CHAT, $messageBody);
 
 			Log::info('AI Chat Proxy', [$response]);
 			return response()->json($response->json(), $response->status());
@@ -53,9 +55,9 @@ class AIChatController extends Controller
 		$directions = $this->getDirections($message);
 		Log::info('Prompt Preparing Directions', [$directions]);
 		$template = $this->getTemplate($message);
-		Log::info('Prompt Preparing Template', [$directions]);
+		Log::info('Prompt Preparing Template', [$template]);
 		$examples = $this->getExamples($message);
-		Log::info('Prompt Preparing Example', [$directions]);
+		Log::info('Prompt Preparing Example', [$examples]);
 
 		return $this->buildPrompt($directions, $template, $examples, $message);
 	}
