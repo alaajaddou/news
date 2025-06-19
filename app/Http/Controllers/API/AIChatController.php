@@ -20,11 +20,11 @@ class AIChatController extends Controller
 				'message' => 'required|string',
 			]);
 
-			Log::info('AI Chat Proxy', $validated);
+			Log::info('AI Chat Proxy', [$validated]);
 
 			$message = $validated['message'];
 
-			Log::info('AI Chat Proxy', $message);
+			Log::info('AI Chat Proxy', [$message]);
 
 			$messageBody = [
 				'model' => 'mistral',
