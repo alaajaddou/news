@@ -37,7 +37,7 @@ class AIChatController extends Controller
 			$response = Http::withHeaders([
 				'Content-Type' => 'application/json',
 			])
-			->timeout(60) // seconds
+			->timeout(360) // seconds
 			->post(self::HTTPS_AI_AJ_GROUP_PS_API_CHAT, $messageBody);
 
 			Log::info('AI Chat Proxy', [$response]);
