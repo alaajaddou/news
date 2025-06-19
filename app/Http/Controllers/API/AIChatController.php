@@ -4,9 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Exception;
-use Illuminate\Http\Client\ConnectionException;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Log;
 
 class AIChatController extends Controller
 {
@@ -14,12 +13,18 @@ class AIChatController extends Controller
 
 	public function proxy()
 	{
+
+		Log::info('AI Chat Proxy', request()->all());
 		try {
 			$validated = request()->validate([
 				'message' => 'required|string',
 			]);
 
+			Log::info('AI Chat Proxy', $validated);
+
 			$message = $validated['message'];
+
+			Log::info('AI Chat Proxy', $message);
 
 			$messageBody = [
 				'model' => 'mistral',
@@ -27,21 +32,30 @@ class AIChatController extends Controller
 				'messages' => [$this->preparePrompt($message)]
 			];
 
+			Log::info('AI Chat Proxy', $messageBody);
+
 			$response = Http::withHeaders([
 				'Content-Type' => 'application/json',
 			])->post(self::HTTPS_AI_AJ_GROUP_PS_API_CHAT, $messageBody);
 
+			Log::info('AI Chat Proxy', [$response]);
 			return response()->json($response->json(), $response->status());
 		} catch (Exception $e) {
+			Log::error('AI Chat Proxy', [$e]);
 			return response()->json($e->getMessage(), $e->getCode());
 		}
 	}
 
 	private function preparePrompt(string $message): array
 	{
+
+		Log::info('AI Chat Proxy', [$message]);
 		$directions = $this->getDirections($message);
+		Log::info('Prompt Preparing Directions', [$directions]);
 		$template = $this->getTemplate($message);
+		Log::info('Prompt Preparing Template', [$directions]);
 		$examples = $this->getExamples($message);
+		Log::info('Prompt Preparing Example', [$directions]);
 
 		return $this->buildPrompt($directions, $template, $examples, $message);
 	}
