@@ -9,42 +9,58 @@ use Log;
 
 class AIChatController extends Controller
 {
-	const HTTPS_AI_AJ_GROUP_PS_API_CHAT = 'https://ai.aj-group.ps/api/chat';
+	const HTTPS_AI_AJ_GROUP_PS_API_CHAT = 'https://ai.aj-group.ps/api/generate';
 
 	public function proxy()
 	{
-
 		Log::info('AI Chat Proxy', request()->all());
+
 		try {
 			$validated = request()->validate([
 				'message' => 'required|string',
 			]);
 
-			Log::info('AI Chat Proxy', [$validated]);
-
 			$message = $validated['message'];
-
-			Log::info('AI Chat Proxy', [$message]);
 
 			$messageBody = [
 				'model' => 'mistral',
-				'stream' => false,
+				'stream' => true, // AI server must support streaming
 				'messages' => [$this->preparePrompt($message)]
 			];
 
-			Log::info('AI Chat Proxy', $messageBody);
+			Log::info('Streaming AI request body', $messageBody);
 
 			$response = Http::withHeaders([
 				'Content-Type' => 'application/json',
 			])
-			->timeout(360) // seconds
-			->post(self::HTTPS_AI_AJ_GROUP_PS_API_CHAT, $messageBody);
+				->timeout(360)
+				->withOptions([
+					'stream' => true, // tell Guzzle to use a stream
+				])
+				->post(self::HTTPS_AI_AJ_GROUP_PS_API_CHAT, $messageBody);
 
-			Log::info('AI Chat Proxy', [$response]);
-			return response()->json($response->json(), $response->status());
+			return response()->stream(function () use ($response) {
+				$stream = $response->toPsrResponse()->getBody();
+
+				while (!$stream->eof()) {
+					echo $stream->read(1024); // Read 1 KB at a time
+					ob_flush();
+					flush();
+				}
+			}, 200, [
+				'Content-Type' => 'text/event-stream',
+				'Cache-Control' => 'no-cache',
+				'X-Accel-Buffering' => 'no', // for nginx to disable buffering
+			]);
+
 		} catch (Exception $e) {
-			Log::error('AI Chat Proxy', [$e]);
-			return response()->json($e->getMessage(), $e->getCode());
+			Log::error('AI Chat Streaming Proxy Error', [$e]);
+
+			// Send error message immediately
+			return response()->json([
+				'error' => 'AI streaming failed',
+				'message' => $e->getMessage(),
+			], $e->getCode() ?: 500);
 		}
 	}
 
