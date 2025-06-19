@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AIChatController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\PlansController;
 use App\Http\Controllers\API\SettingsController;
@@ -15,6 +16,8 @@ Route::prefix('v1')->group(function () {
         $fetcher = new PostFetcher();
         $fetcher->fetchAllSources();
     });
+
+	Route::post('/chat-proxy', [AIChatController::class, 'proxy']);
 });
 
 // Authentication routes
