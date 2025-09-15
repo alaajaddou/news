@@ -63,7 +63,10 @@ class GenerateStore extends Command
 			// =================== STEP 7: Upgrade Store ===================
 			$this->upgradeStore($mageRoot);
 
-			// =================== STEP 8: Show Result ===================
+			// =================== STEP 8: Fix Permissions ===================
+			$this->fixPermissions($mageRoot);
+
+			// =================== STEP 9: Show Result ===================
 			$this->showResult($baseUrl, $backendFrontName);
 
 			$this->info("✅ Store generation completed successfully!");
