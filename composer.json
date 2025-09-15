@@ -15,7 +15,8 @@
         "spatie/laravel-sitemap": "^7.3",
         "symfony/css-selector": "^7.2",
         "symfony/dom-crawler": "^7.2",
-        "willvincent/feeds": "^2.7"
+        "willvincent/feeds": "^2.7",
+	    "ext-mysqli": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
