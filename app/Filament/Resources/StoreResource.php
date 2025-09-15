@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\StoreResource\Pages;
 use App\Models\Store;
+use Filament\Actions\StaticAction;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
@@ -51,7 +52,7 @@ class StoreResource extends Resource
 				Tables\Columns\TextColumn::make('created_at')->dateTime(),
 			])
 			->recordAction(function (Store $record) use (&$storeName) {
-				Action::make('Generate Site')->action(function () use ($record) {
+				StaticAction::make('Generate Site')->action(function () use ($record) {
 					Artisan::call('site:generate', [
 						'id'         => $record->name,
 						'--language' => $record->language,
