@@ -46,7 +46,7 @@ class GenerateStore extends Command
 			$this->copyFolder($src, $mageRoot);
 
 			// =================== STEP 2: CREATE DB ===================
-			$this->createDB($storeId, $dbHost, $user, $pass);
+			$this->createDB($storeId, '127.0.0.1', 'root', 'AlaaM.Jaddo3#');
 
 			// =================== STEP 3: Nginx Configurations ===================
 			$this->createNginxRecord($storeId, $mageRoot);
