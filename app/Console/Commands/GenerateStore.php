@@ -19,6 +19,11 @@ class GenerateStore extends Command
 
 	public function handle()
 	{
+		// Set higher execution timeout for the entire command
+		set_time_limit(3600); // 60 minutes
+		ini_set('memory_limit', '2G');
+
+		// reding arguments.
 		$storeId = $this->argument('id');
 		$language = $this->option('language');
 		$currency = $this->option('currency');
@@ -94,6 +99,10 @@ class GenerateStore extends Command
 				throw new \RuntimeException("DB Connection failed: " . $mysqli->connect_error);
 			}
 
+			// Set MySQL timeout options
+			$mysqli->options(MYSQLI_OPT_CONNECT_TIMEOUT, 60);
+			$mysqli->options(MYSQLI_OPT_READ_TIMEOUT, 300);
+
 			try {
 				// 2. Create DB
 				$this->info("  → Creating database '{$dbName}' with UTF8MB4 charset...");
@@ -145,7 +154,7 @@ class GenerateStore extends Command
 			            fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
 			            fastcgi_param PHP_FLAG  \"session.auto_start=off \n suhosin.session.cryptua=off\";
 			            fastcgi_param PHP_VALUE \"memory_limit=756M \n max_execution_time=600\";
-			            fastcgi_read_timeout 600s;
+			            fastcgi_read_timeout 3600s;
 			            fastcgi_connect_timeout 600s;
 			            fastcgi_index index.php;
 			            fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
@@ -224,7 +233,7 @@ class GenerateStore extends Command
 			        fastcgi_buffer_size 32k;
 			        fastcgi_param PHP_FLAG  \"session.auto_start=off \n suhosin.session.cryptua=off\";
 			        fastcgi_param PHP_VALUE \"memory_limit=756M \n max_execution_time=18000\";
-			        fastcgi_read_timeout 600s;
+			        fastcgi_read_timeout 3600s;
 			        fastcgi_connect_timeout 600s;
 			        fastcgi_index index.php;
 			        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
@@ -302,7 +311,7 @@ class GenerateStore extends Command
 		$this->task("Installing Magento for store: {$storeId}", function () use ($mage_root, $baseurl, $dbHost, $storeId, $user, $pass, $adminFirstName, $adminLastName, $adminEmail, $backendFrontName, $language, $currency, $timezone, $osHost, $osPort, $osPass) {
 			$this->info("  → Preparing Magento installation command...");
 
-			$cmd = "sudo php {$mage_root}/bin/magento setup:install "
+			$cmd = "timeout 1800 sudo php {$mage_root}/bin/magento setup:install "
 				. "--cleanup-database "
 				. "--base-url={$baseurl} "
 				. "--db-host={$dbHost} "
@@ -363,7 +372,7 @@ class GenerateStore extends Command
 			$this->info("  → Preparing sample data deployment with increased memory limit...");
 
 			// Increase memory limit for sample data deployment
-			$deployCmd = "sudo php -d memory_limit=2G $mage_root/bin/magento sampledata:deploy";
+			$deployCmd = "timeout 2400 sudo php -d memory_limit=2G $mage_root/bin/magento sampledata:deploy";
 
 			$this->info("  → Running sample data deployment (this may take several minutes)...");
 			$this->line("    <fg=gray>Memory limit: 2GB</>");
@@ -379,7 +388,7 @@ class GenerateStore extends Command
 			$this->info("  ✓ Sample data deployed successfully");
 
 			// Show any relevant output messages
-			$relevantOutput = array_filter($sampleOutput, function($line) {
+			$relevantOutput = array_filter($sampleOutput, function ($line) {
 				return str_contains($line, 'successfully') ||
 					str_contains($line, 'Complete') ||
 					str_contains($line, 'Finished') ||
@@ -398,7 +407,7 @@ class GenerateStore extends Command
 	{
 		$this->task("Fixing file permissions for Magento directory", function () use ($mage_root) {
 			$this->info("  → Changing ownership to www-data...");
-			exec("sudo chown -R www-data:www-data $mage_root", $chownOutput, $chownReturn);
+			exec("timeout 300 sudo chown -R www-data:www-data $mage_root", $chownOutput, $chownReturn);
 
 			if ($chownReturn !== 0) {
 				$errorOutput = implode("\n", $chownOutput);
@@ -406,7 +415,7 @@ class GenerateStore extends Command
 			}
 
 			$this->info("  → Setting file permissions to 644...");
-			exec("sudo find $mage_root -type f -exec chmod 644 {} +", $fileOutput, $fileReturn);
+			exec("timeout 300 sudo find $mage_root -type f -exec chmod 644 {} +", $fileOutput, $fileReturn);
 
 			if ($fileReturn !== 0) {
 				$errorOutput = implode("\n", $fileOutput);
@@ -414,7 +423,7 @@ class GenerateStore extends Command
 			}
 
 			$this->info("  → Setting directory permissions to 755...");
-			exec("sudo find $mage_root -type d -exec chmod 755 {} +", $dirOutput, $dirReturn);
+			exec("timeout 300 sudo find $mage_root -type d -exec chmod 755 {} +", $dirOutput, $dirReturn);
 
 			if ($dirReturn !== 0) {
 				$errorOutput = implode("\n", $dirOutput);
@@ -434,7 +443,7 @@ class GenerateStore extends Command
 		$this->task("Running Magento setup:upgrade", function () use ($mage_root) {
 			$this->info("  → Preparing Magento upgrade after data installation...");
 
-			$upgradeCmd = "php $mage_root/bin/magento setup:upgrade";
+			$upgradeCmd = "timeout 1800 php -d memory_limit=2G -d max_execution_time=3600 $mage_root/bin/magento setup:upgrade";
 
 			$this->info("  → Running setup:upgrade (this may take a few minutes)...");
 			$this->line("    <fg=gray>Command: setup:upgrade</>");
@@ -450,7 +459,7 @@ class GenerateStore extends Command
 			$this->info("  ✓ Magento upgrade completed successfully");
 
 			// Show any relevant output messages
-			$relevantOutput = array_filter($upgradeOutput, function($line) {
+			$relevantOutput = array_filter($upgradeOutput, function ($line) {
 				return str_contains($line, 'successfully') ||
 					str_contains($line, 'Complete') ||
 					str_contains($line, 'Nothing to import') ||
