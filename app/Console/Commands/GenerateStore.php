@@ -38,7 +38,7 @@ class GenerateStore extends Command
 		$baseUrl = "https://{$storeId}.aj-group.ps/";
 
 		$mageRoot = "/var/www/htdocs/stores/{$storeId}";
-		$src = __DIR__ . '/store_example';
+		$src = '/var/www/htdocs/website/store_example';
 
 		// =================== STEP 1: COPY STORE ===================
 		$this->copyFolder($src, $mageRoot);

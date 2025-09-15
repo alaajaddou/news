@@ -22,10 +22,13 @@ class StoreResource extends Resource
 			->schema([
 				Forms\Components\TextInput::make('name')->required()->label('Store DB Name'),
 				Forms\Components\Select::make('language')
-					->options(['en_US' => 'English (US)', 'ar_sa' => 'Arabic'])
+					->options(['en_US' => 'English (US)',
+					           'ar_sa' => 'Arabic'])
 					->required(),
 				Forms\Components\Select::make('currency')
-					->options(['USD' => 'USD', 'ILS' => 'ILS', 'JOD' => 'JOD'])
+					->options(['USD' => 'USD',
+					           'ILS' => 'ILS',
+					           'JOD' => 'JOD'])
 					->required(),
 				Forms\Components\Select::make('timezone')
 					->options(['Asia/Jerusalem' => 'Asia/Jerusalem'])
@@ -50,7 +53,7 @@ class StoreResource extends Resource
 					->icon('heroicon-o-play')
 					->action(function (Store $record, array $data) {
 						Artisan::call('site:generate', [
-							'id' => $record->name,
+							'id'         => $record->name,
 							'--language' => $record->language,
 							'--currency' => $record->currency,
 							'--timezone' => $record->timezone,
@@ -64,9 +67,9 @@ class StoreResource extends Resource
 	public static function getPages(): array
 	{
 		return [
-			'index' => Pages\ListStores::route('/'),
+			'index'  => Pages\ListStores::route('/'),
 			'create' => Pages\CreateStore::route('/create'),
-			'edit' => Pages\EditStore::route('/{record}/edit'),
+			'edit'   => Pages\EditStore::route('/{record}/edit'),
 		];
 	}
 }
