@@ -280,6 +280,8 @@ class GenerateStore extends Command
 	{
 		$this->logProgress("Installing Magento");
 		[$mage_root, $baseurl, $dbHost, $storeId, $user, $pass, $adminFirstName, $adminLastName, $adminEmail, $backendFrontName, $language, $currency, $timezone, $osHost, $osPort, $osPass] = $args;
+		$this->logProgress("Start Installing Magento with the following parameters:");
+		$this->logProgress("Magento Store Id: {$storeId}");
 
 		$cmd = "sudo php {$mage_root}/bin/magento setup:install "
 			. "--cleanup-database "
