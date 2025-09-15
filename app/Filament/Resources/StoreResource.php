@@ -9,7 +9,6 @@ use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Artisan;
 
@@ -50,18 +49,14 @@ class StoreResource extends Resource
 				Tables\Columns\TextColumn::make('timezone'),
 				Tables\Columns\TextColumn::make('created_at')->dateTime(),
 			])
-			->recordActions([
-				Action::make('Generate')
-					->accessSelectedRecords()
-					->action(function (Store $record) use (&$storeName)  {
-						Artisan::call('site:generate', [
-							'id'         => $record->name,
-							'--language' => $record->language,
-							'--currency' => $record->currency,
-							'--timezone' => $record->timezone,
-						]);
-					}),
-			])
+			->recordAction(function (Store $record) use (&$storeName) {
+				Artisan::call('site:generate', [
+					'id'         => $record->name,
+					'--language' => $record->language,
+					'--currency' => $record->currency,
+					'--timezone' => $record->timezone,
+				]);
+			})
 			->filters([]);
 	}
 
