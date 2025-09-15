@@ -45,7 +45,9 @@ class GenerateStore extends Command
 
 			// =================== STEP 1: COPY STORE ===================
 			$this->info("→ Copying store files...");
+			$this->logProgress("Copying store files...");
 			$this->copyFolder($src, $mageRoot);
+			$this->logProgress("Store files copied successfully!");
 
 			// =================== STEP 2: CREATE DB ===================
 			$this->createDB($storeId, '127.0.0.1', 'root', 'AlaaM.Jaddo3#');
@@ -97,7 +99,6 @@ class GenerateStore extends Command
 
 	private function copyFolder($src, $dst): void
 	{
-		$this->logProgress("Copying {$src} to {$dst}");
 		if (!is_dir($dst)) mkdir($dst, 0755, true);
 		$dir = opendir($src);
 		while (($file = readdir($dir)) !== false) {
@@ -111,7 +112,6 @@ class GenerateStore extends Command
 			}
 		}
 		closedir($dir);
-		$this->logProgress("Copied {$src} to {$dst}");
 	}
 
 	private function createDB($storeId, $dbAdminHost, $dbAdminUser, $dbAdminPass): void
