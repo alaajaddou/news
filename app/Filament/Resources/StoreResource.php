@@ -50,7 +50,7 @@ class StoreResource extends Resource
 					->icon('heroicon-o-play')
 					->action(function (Store $record, array $data) {
 						Artisan::call('site:generate', [
-							'name' => $record->name,
+							'id' => $record->name,
 							'--language' => $record->language,
 							'--currency' => $record->currency,
 							'--timezone' => $record->timezone,

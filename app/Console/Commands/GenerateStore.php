@@ -19,7 +19,7 @@ class GenerateStore extends Command
 
 	public function handle()
 	{
-		$storeId = $this->argument('name');
+		$storeId = $this->argument('id');
 		$language = $this->option('language');
 		$currency = $this->option('currency');
 		$timezone = $this->option('timezone');
