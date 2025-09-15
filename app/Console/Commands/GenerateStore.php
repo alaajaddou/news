@@ -21,6 +21,12 @@ class GenerateStore extends Command
 	public function handle()
 	{
 		try {
+			// Set higher execution timeout for the entire command
+			set_time_limit(3600); // 60 minutes
+			ini_set('memory_limit', '2G');
+			ini_set('max_execution_time', 3600);
+			ini_set('max_input_time', 3600);
+			ini_set('max_input_vars', 10000);
 			$storeId = $this->argument('id');
 			$language = $this->option('language');
 			$currency = $this->option('currency');
