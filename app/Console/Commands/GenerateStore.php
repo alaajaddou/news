@@ -16,6 +16,7 @@ class GenerateStore extends Command
                             {--timezone=Asia/Jerusalem}';
 
 	protected $description = 'Generate a new Magento store';
+	private string $logFile;
 
 	public function handle()
 	{
@@ -40,6 +41,7 @@ class GenerateStore extends Command
 
 			$mageRoot = "/var/www/htdocs/stores/{$storeId}";
 			$src = '/var/www/htdocs/website/store_example';
+			$this->logFile = storage_path("logs/generate-store-{$storeId}.log");
 
 			// =================== STEP 1: COPY STORE ===================
 			$this->info("→ Copying store files...");
@@ -95,6 +97,7 @@ class GenerateStore extends Command
 
 	private function copyFolder($src, $dst): void
 	{
+		$this->logProgress("Copying {$src} to {$dst}");
 		if (!is_dir($dst)) mkdir($dst, 0755, true);
 		$dir = opendir($src);
 		while (($file = readdir($dir)) !== false) {
@@ -108,27 +111,33 @@ class GenerateStore extends Command
 			}
 		}
 		closedir($dir);
+		$this->logProgress("Copied {$src} to {$dst}");
 	}
 
 	private function createDB($storeId, $dbAdminHost, $dbAdminUser, $dbAdminPass): void
 	{
+		$this->logProgress("Creating database {$storeId}");
 		$this->info("→ Creating database '{$storeId}'...");
 		$mysqli = new mysqli($dbAdminHost, $dbAdminUser, $dbAdminPass);
 		if ($mysqli->connect_error) {
+			$this->logProgress("Failed to connect to MySQL: " . $mysqli->connect_error);
 			throw new \RuntimeException("DB Connection failed: " . $mysqli->connect_error);
 		}
 
 		try {
 			if (!$mysqli->query("CREATE DATABASE IF NOT EXISTS `$storeId` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;")) {
+				$this->logProgress("Error creating database: " . $mysqli->error);
 				throw new \RuntimeException("Error creating database: " . $mysqli->error);
 			}
 
 			if (!$mysqli->query("GRANT ALL PRIVILEGES ON `$storeId`.* TO 'adminaj'@'localhost';")) {
+				$this->logProgress("Error granting privileges: " . $mysqli->error);
 				throw new \RuntimeException("Error granting privileges: " . $mysqli->error);
 			}
 
 			$mysqli->query("FLUSH PRIVILEGES;");
 			$this->info("✓ Database '{$storeId}' created successfully.");
+			$this->logProgress("Database '{$storeId}' created successfully.");
 		} finally {
 			$mysqli->close();
 		}
@@ -136,6 +145,7 @@ class GenerateStore extends Command
 
 	private function createNginxRecord($storeId, $mage_root): void
 	{
+		$this->logProgress("Creating Nginx record for {$storeId}");;
 		$this->info("→ Setting up Nginx for {$storeId}.aj-group.ps");
 		$nginx_conf = "/etc/nginx/sites-available/{$storeId}.aj-group.ps";
 		$nginx_conf_content = "server {
@@ -262,11 +272,13 @@ class GenerateStore extends Command
 		$this->runProcess("sudo nginx -t");
 		$this->runProcess("sudo nginx -s reload");
 
+		$this->logProgress("Nginx record for {$storeId}.aj-group.ps created successfully");
 		$this->info("✓ Nginx configured successfully");
 	}
 
 	private function installMagento(...$args): void
 	{
+		$this->logProgress("Installing Magento");
 		[$mage_root, $baseurl, $dbHost, $storeId, $user, $pass, $adminFirstName, $adminLastName, $adminEmail, $backendFrontName, $language, $currency, $timezone, $osHost, $osPort, $osPass] = $args;
 
 		$cmd = "sudo php {$mage_root}/bin/magento setup:install "
@@ -297,35 +309,55 @@ class GenerateStore extends Command
 
 		$this->runProcess($cmd, $mage_root);
 		$this->info("✓ Magento installed successfully");
+		$this->logProgress("Magento installed successfully");
 	}
 
 	private function deploySampleData($mage_root): void
 	{
+		$this->logProgress("Deploying sample data");
 		$this->runProcess("sudo php -d memory_limit=2G {$mage_root}/bin/magento sampledata:deploy", $mage_root);
 		$this->info("✓ Sample data deployed successfully");
+		$this->logProgress("Sample data deployed successfully");
 	}
 
 	private function fixPermissions($mage_root): void
 	{
+		$this->logProgress("Fixing permissions");
 		$this->runProcess("sudo chown -R www-data:www-data $mage_root");
 		$this->runProcess("sudo find $mage_root -type f -exec chmod 644 {} +");
 		$this->runProcess("sudo find $mage_root -type d -exec chmod 755 {} +");
 
 		$this->info("✓ Permissions fixed");
+		$this->logProgress("Permissions fixed");
 	}
 
 	private function upgradeStore($mage_root): void
 	{
+		$this->logProgress("Upgrading Magento");
 		$this->runProcess("php {$mage_root}/bin/magento setup:upgrade", $mage_root);
 		$this->info("✓ Magento upgraded successfully");
+		$this->logProgress("Magento upgraded successfully");
 	}
 
 	private function showResult($baseurl, $backendFrontName): void
 	{
+		$this->logProgress("Installation Complete!");
 		$this->info("🎉 Installation Complete!");
+
+		$this->logProgress("Store Details:");
+		$this->logProgress("Frontend: {$baseurl}");
 		$this->line("Frontend: {$baseurl}");
+		$this->logProgress("Admin: {$baseurl}{$backendFrontName}");
 		$this->line("Admin: {$baseurl}{$backendFrontName}");
+		$this->logProgress("User: adminaj");
 		$this->line("User: adminaj");
+		$this->logProgress("Password: A~12345Jaddou");
 		$this->line("Password: A~12345Jaddou");
+	}
+
+	private function logProgress(string $message): void
+	{
+		$timestamp = date('Y-m-d H:i:s');
+		file_put_contents($this->logFile, "[$timestamp] $message\n", FILE_APPEND);
 	}
 }
