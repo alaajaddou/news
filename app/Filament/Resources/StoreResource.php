@@ -6,6 +6,7 @@ use App\Filament\Resources\StoreResource\Pages;
 use App\Models\Store;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -51,15 +52,22 @@ class StoreResource extends Resource
 				Tables\Actions\Action::make('Generate')
 					->color('success')
 					->icon('heroicon-o-play')
-					->action(function (Store $record, array $data) {
+					->action(function (Store $record, array $data): void {
 						Artisan::call('site:generate', [
 							'id'         => $record->name,
 							'--language' => $record->language,
 							'--currency' => $record->currency,
 							'--timezone' => $record->timezone,
 						]);
-						$this->notify('success', "Store {$record->name} generated successfully.");
+
+						Notification::make()
+							->title("Store {$record->name} generated successfully.")
+							->success()
+							->send();
 					}),
+
+				Tables\Actions\EditAction::make(),
+				Tables\Actions\DeleteAction::make(),
 			])
 			->filters([]);
 	}
