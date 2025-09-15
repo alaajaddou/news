@@ -90,6 +90,7 @@ class GenerateStore extends Command
 		$process->setTimeout(3600); // unlimited timeout
 		$process->run(function ($type, $buffer) {
 			echo $buffer; // stream live output
+			$this->logProgress($buffer);
 		});
 
 		if (!$process->isSuccessful()) {
