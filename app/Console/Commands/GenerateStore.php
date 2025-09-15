@@ -290,7 +290,7 @@ class GenerateStore extends Command
 		$this->logProgress("Start Installing Magento with the following parameters:");
 		$this->logProgress("Magento Store Id: {$storeId}");
 
-		$cmd = "sudo php {$mage_root}/bin/magento setup:install "
+		$cmd = "sudo php -d memory_limit=2G {$mage_root}/bin/magento setup:install "
 			. "--cleanup-database "
 			. "--base-url={$baseurl} "
 			. "--db-host={$dbHost} "
