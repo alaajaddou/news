@@ -39,6 +39,7 @@ class StoreResource extends Resource
 
 	public static function table(Table $table): Table
 	{
+		$storeName = '';
 		return $table
 			->columns([
 				Tables\Columns\TextColumn::make('id'),
@@ -50,22 +51,24 @@ class StoreResource extends Resource
 			])
 			->actions([
 				Tables\Actions\Action::make('Generate')
+					->successNotification(
+						Notification::make()
+							->success()
+							->title('Store Generated')
+							->body("Store {$storeName} generated successfully."),
+					)
 					->color('success')
 					->icon('heroicon-o-play')
-					->action(function (Store $record, array $data): void {
+					->action(function (Store $record, array $data) {
+						$storeName = $record->name;
 						Artisan::call('site:generate', [
 							'id'         => $record->name,
 							'--language' => $record->language,
 							'--currency' => $record->currency,
 							'--timezone' => $record->timezone,
 						]);
-
-						Notification::make()
-							->title("Store {$record->name} generated successfully.")
-							->success()
-							->send();
+//						$this->notify('success', "Store {$record->name} generated successfully.");
 					}),
-
 				Tables\Actions\EditAction::make(),
 				Tables\Actions\DeleteAction::make(),
 			])
