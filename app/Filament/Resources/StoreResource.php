@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Artisan;
 
@@ -49,28 +50,17 @@ class StoreResource extends Resource
 				Tables\Columns\TextColumn::make('timezone'),
 				Tables\Columns\TextColumn::make('created_at')->dateTime(),
 			])
-			->actions([
-				Tables\Actions\Action::make('Generate')
-					->successNotification(
-						Notification::make()
-							->success()
-							->title('Store Generated')
-							->body("Store {$storeName} generated successfully."),
-					)
-					->color('success')
-					->icon('heroicon-o-play')
-					->action(function (Store $record, array $data) {
-						$storeName = $record->name;
+			->recordActions([
+				Action::make('Generate')
+					->accessSelectedRecords()
+					->action(function (Store $record) use (&$storeName)  {
 						Artisan::call('site:generate', [
 							'id'         => $record->name,
 							'--language' => $record->language,
 							'--currency' => $record->currency,
 							'--timezone' => $record->timezone,
 						]);
-//						$this->notify('success', "Store {$record->name} generated successfully.");
 					}),
-				Tables\Actions\EditAction::make(),
-				Tables\Actions\DeleteAction::make(),
 			])
 			->filters([]);
 	}
