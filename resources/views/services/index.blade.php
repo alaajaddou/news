@@ -19,7 +19,7 @@
     </section>
 
     <!-- Snapshot Stats -->
-    <section class="-mt-12">
+    <section class="mt-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white shadow-lg rounded-xl p-6 grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div class="text-center">
@@ -96,7 +96,6 @@
                                         @endforeach
                                     </div>
                                     <div class="flex items-center gap-3">
-                                        <div class="text-sm text-gray-700 font-semibold">{{ $price }}</div>
                                         <a href="{{ route('services.show', $slug) }}" class="inline-block py-2 px-4 bg-indigo-600 text-white rounded-lg">Learn More</a>
                                     </div>
                                 </div>
@@ -127,7 +126,6 @@
                                         @endforeach
                                     </div>
                                     <div class="flex items-center gap-3">
-                                        <div class="text-sm text-gray-700 font-semibold">{{ $d['price'] }}</div>
                                         <a href="#" class="inline-block py-2 px-4 bg-indigo-600 text-white rounded-lg">Learn More</a>
                                     </div>
                                 </div>
