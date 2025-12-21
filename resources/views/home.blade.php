@@ -65,7 +65,7 @@
                                 @endif
                                 <h3 class="text-xl font-semibold mb-3">{{ $service->title }}</h3>
                                 <p class="text-gray-600 mb-6">{{ $service->description }}</p>
-                                <a href="{{ route('services.show', $service->slug) }}" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
+                                <a href="{{ route('services.show', $service->slug) }}" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
                             </div>
                         </div>
                     @endforeach
@@ -76,7 +76,7 @@
                             <div class="mb-4"><i class="fas fa-code text-4xl text-indigo-600"></i></div>
                             <h3 class="text-xl font-semibold mb-3">Frontend Development</h3>
                             <p class="text-gray-600 mb-6">Modern, responsive web applications built with the latest frontend technologies.</p>
-                            <a href="{{ route('services.index') }}" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
+                            <a href="{{ route('services.index') }}" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
                     <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
@@ -84,7 +84,7 @@
                             <div class="mb-4"><i class="fas fa-brain text-4xl text-indigo-600"></i></div>
                             <h3 class="text-xl font-semibold mb-3">AI Project Consultation</h3>
                             <p class="text-gray-600 mb-6">Expert guidance on implementing AI solutions for operational and business growth.</p>
-                            <a href="{{ route('services.index') }}" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
+                            <a href="{{ route('services.index') }}" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
                     <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
@@ -92,7 +92,7 @@
                             <div class="mb-4"><i class="fas fa-database text-4xl text-indigo-600"></i></div>
                             <h3 class="text-xl font-semibold mb-3">ERP Solutions</h3>
                             <p class="text-gray-600 mb-6">Comprehensive ERP implementation and AI-optimized business solutions.</p>
-                            <a href="{{ route('services.index') }}" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
+                            <a href="{{ route('services.index') }}" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
                     <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
@@ -100,7 +100,7 @@
                             <div class="mb-4"><i class="fas fa-cloud-upload-alt text-4xl text-indigo-600"></i></div>
                             <h3 class="text-xl font-semibold mb-3">DevOps & Cloud</h3>
                             <p class="text-gray-600 mb-6">CI/CD, containerization and cloud architecture for scalable systems.</p>
-                            <a href="{{ route('services.index') }}" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
+                            <a href="{{ route('services.index') }}" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
                     <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
@@ -108,7 +108,7 @@
                             <div class="mb-4"><i class="fas fa-paint-brush text-4xl text-indigo-600"></i></div>
                             <h3 class="text-xl font-semibold mb-3">UI/UX Design</h3>
                             <p class="text-gray-600 mb-6">Design systems, wireframes, and prototypes focused on usability.</p>
-                            <a href="{{ route('services.index') }}" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
+                            <a href="{{ route('services.index') }}" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
                     <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
@@ -116,7 +116,7 @@
                             <div class="mb-4"><i class="fas fa-cogs text-4xl text-indigo-600"></i></div>
                             <h3 class="text-xl font-semibold mb-3">CMS & Content Platforms</h3>
                             <p class="text-gray-600 mb-6">Robust content management systems tailored to editorial workflows.</p>
-                            <a href="{{ route('services.index') }}" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
+                            <a href="{{ route('services.index') }}" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
                 @endif

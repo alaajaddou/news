@@ -79,9 +79,6 @@
                                             <span class="px-2 py-1 bg-gray-100 text-sm text-gray-700 rounded">{{ $t }}</span>
                                         @endforeach
                                     </div>
-                                    <div class="flex items-center gap-3">
-                                        <a href="{{ route('services.show', $slug) }}" class="inline-block py-2 px-4 bg-indigo-600 text-white rounded-lg">Learn More</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -107,9 +104,6 @@
                                         @foreach(array_slice($d['technologies'],0,4) as $t)
                                             <span class="px-2 py-1 bg-gray-100 text-sm text-gray-700 rounded">{{ $t }}</span>
                                         @endforeach
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <a href="#" class="inline-block py-2 px-4 bg-indigo-600 text-white rounded-lg">Learn More</a>
                                     </div>
                                 </div>
                             </div>
