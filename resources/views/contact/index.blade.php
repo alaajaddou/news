@@ -11,7 +11,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="text-3xl md:text-4xl font-extrabold mb-6">Let's Connect</h1>
             <p class="text-lg md:text-xl max-w-3xl mx-auto mb-6">Ready to discuss your next project, explore collaboration opportunities, or share ideas about software engineering and AI?</p>
-            <p class="text-md text-indigo-200">I'm always excited to connect with potential clients, fellow developers, and innovators. Reach out and let's explore how we can work together to build something impactful.</p>
+            <p class="text-md text-indigo-200">Aj Group is excited to connect with potential clients, partners, and innovators. Reach out and let's explore how we can work together to build something impactful.</p>
         </div>
     </section>
 
@@ -35,8 +35,8 @@
 
                     <!-- Marketing / Value Props -->
                     <div class="bg-gradient-to-r from-indigo-50 to-white border-l-4 border-indigo-600 p-6 rounded-lg shadow-sm mb-6">
-                        <h3 class="text-xl font-bold text-indigo-700 mb-2">How I Help</h3>
-                        <p class="text-gray-700 mb-4">I design AI-first, maintainable software that scales — from prototypes to enterprise systems. If you need faster time-to-value, robust integrations, or intelligent automation, let's talk.</p>
+                        <h3 class="text-xl font-bold text-indigo-700 mb-2">How Aj Group Helps</h3>
+                        <p class="text-gray-700 mb-4">Aj Group designs AI-first, maintainable software that scales — from prototypes to enterprise systems. If you need faster time-to-value, robust integrations, or intelligent automation, let's talk.</p>
                         <ul class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <li class="bg-white rounded-lg p-3 border border-gray-100">
                                 <p class="text-sm font-semibold text-gray-800">AI-first Solutions</p>
@@ -60,7 +60,7 @@
                     <!-- Contact Form -->
                     <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
                         <div class="p-8">
-                            <h3 class="text-2xl font-bold mb-6 text-gray-800">Send Me a Message</h3>
+                            <h3 class="text-2xl font-bold mb-6 text-gray-800">Send Us a Message</h3>
                             <form action="{{ route('contact.submit') }}" method="POST" class="space-y-6" id="contact-form">
                                 @csrf
 
@@ -102,7 +102,7 @@
                                 <input type="hidden" name="g-recaptcha-response" id="recaptcha_token">
 
                                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                                    <div class="text-sm text-gray-600">I usually reply within 24 hours.</div>
+                                    <div class="text-sm text-gray-600">We usually reply within 24 hours.</div>
                                     <div class="text-center md:text-right">
                                         <button type="submit" class="w-full md:w-auto inline-block py-3 px-8 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium shadow-md transition duration-300">Send Message</button>
                                     </div>
@@ -163,7 +163,7 @@
                     <!-- Social Media -->
                     <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
                         <div class="p-8">
-                            <h3 class="text-xl font-bold mb-6 text-gray-800">Connect With Me</h3>
+                            <h3 class="text-xl font-bold mb-6 text-gray-800">Connect With Aj Group</h3>
 
                             
 
