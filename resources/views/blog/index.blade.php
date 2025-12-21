@@ -6,11 +6,12 @@
 @section('og_description', 'Explore articles, tutorials, and insights about artificial intelligence, machine learning, and software engineering.')
 
 @section('content')
+
     <!-- Hero Section -->
-    <section class="py-12">
+    <section class="bg-indigo-700 text-white py-16 md:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1>Blog</h1>
-            <p>Insights, tutorials, and thoughts on AI and technology</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
+            <p class="text-xl md:text-2xl mb-2">Insights, tutorials, and thoughts on AI and technology</p>
         </div>
     </section>
 
