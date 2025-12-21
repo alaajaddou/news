@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Thank You - Alaa M. Jaddou</title>
+    <title>Thank You - Aj Group</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -40,13 +40,13 @@
 <body>
 <div class="email-container">
     <h1>Thank You, {{ $contact->name }}</h1>
-    <p>We've received your message and are thrilled you reached out to <strong>Alaa M. Jaddou</strong>.</p>
+    <p>We've received your message and are thrilled you reached out to <strong>Aj Group</strong>.</p>
     <p>Our team will review your inquiry and get back to you as soon as possible.</p>
-    <p>If you need urgent assistance, you can contact us directly at <a href="mailto:info@alaajaddou.com">info@alaajaddou.com</a>.</p>
+    <p>If you need urgent assistance, you can contact us directly at <a href="mailto:info@aj-group.ps">info@aj-group.ps</a>.</p>
 
     <a href="{{ config('app.url') }}" class="button">Visit Our Website</a>
 
-    <p class="footer">Thanks again,<br><strong>Alaa M. Jaddou Team</strong></p>
+    <p class="footer">Thanks again,<br><strong>Aj Group Team</strong></p>
 </div>
 </body>
 </html>

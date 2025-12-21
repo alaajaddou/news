@@ -6,10 +6,10 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="@yield('meta_description', 'Alaa M. Jaddou - Senior Software Engineer')">
-    <meta property="og:title" content="@yield('og_title', 'Alaa M. Jaddou - Senior Software Engineer')">
-    <meta property="og:description" content="@yield('og_description', 'Frontend Software Engineer aiming toward AI + Software Architect')">
-    <meta property="og:image" content="@yield('og_image', asset('images/alaa-jaddou-logo.png'))">
+    <meta name="description" content="@yield('meta_description', 'Aj Group - AI & Software Solutions')">
+    <meta property="og:title" content="@yield('og_title', 'Aj Group - AI & Software Solutions')">
+    <meta property="og:description" content="@yield('og_description', 'AI-first software and systems for business automation and optimization')">
+    <meta property="og:image" content="@yield('og_image', asset('images/logo.svg'))">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
 
@@ -25,7 +25,7 @@
     <link rel="icon" type="image/png" sizes="512x512" href="{{ asset('favicons/android-chrome-512x512.png') }}">
 
 
-    <title>@yield('title', 'Alaa M. Jaddou - Senior Software Engineer')</title>
+    <title>@yield('title', 'Aj Group - AI & Software Solutions')</title>
 
     <link name="canonical" rel="canonical" href="{{ url()->current() }}">
     <!-- Fonts -->
@@ -45,8 +45,10 @@
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <a class="flex-shrink-0 flex items-center text-white font-bold text-xl" href="{{ route('home') }}">
-                        Alaa M. Jaddou
+                    <a class="flex-shrink-0 flex items-center text-white font-bold text-xl" href="{{ route('home') }}" aria-label="Aj Group">
+                        <img src="{{ asset('images/logo.png') }}" alt="" class="h-14 w-10 mr-3 rounded-full bg-white object-cover">
+                        <span class="sr-only">Aj Group</span>
+                        <span aria-hidden="true">Group</span>
                     </a>
                 </div>
 
@@ -92,8 +94,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Alaa M. Jaddou</h3>
-                    <p class="mb-4">Senior Software Engineer</p>
+                    <h3 class="text-lg font-semibold mb-4">Aj Group</h3>
+                    <p class="mb-4">AI & Software Solutions</p>
                     <div class="flex space-x-4">
                         <a href="https://www.linkedin.com/in/alaa-m-jaddou-92310098/" target="_blank" class="text-gray-300 hover:text-white"><i class="fab fa-linkedin"></i></a>
                         <a href="https://github.com/alaajaddou" target="_blank" class="text-gray-300 hover:text-white"><i class="fab fa-github"></i></a>
@@ -119,7 +121,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-                <p>&copy; {{ date('Y') }} Alaa M. Jaddou. All rights reserved.</p>
+                <p>&copy; {{ date('Y') }} Aj Group. All rights reserved.</p>
             </div>
         </div>
     </footer>

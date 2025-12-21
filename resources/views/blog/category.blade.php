@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', $category->name . ' - Blog - Alaa M. Jaddou')
-@section('meta_description', 'Explore articles, tutorials, and insights about ' . $category->name . ' from Alaa M. Jaddou.')
-@section('og_title', $category->name . ' - Blog - Alaa M. Jaddou')
-@section('og_description', 'Explore articles, tutorials, and insights about ' . $category->name . ' from Alaa M. Jaddou.')
+@section('title', $category->name . ' - Blog - Aj Group')
+@section('meta_description', 'Explore articles, tutorials, and insights about ' . $category->name . ' from Aj Group.')
+@section('og_title', $category->name . ' - Blog - Aj Group')
+@section('og_description', 'Explore articles, tutorials, and insights about ' . $category->name . ' from Aj Group.')
 
 @section('content')
     <!-- Hero Section -->
@@ -30,7 +30,7 @@
                                             </a>
                                         @else
                                             <a href="{{ route('blog.show', $post->slug) }}">
-                                                <img src="https://via.placeholder.com/300x200?text=Alaa+M.+Jaddou" class="img-fluid rounded-start w-100 object-fit-cover" alt="{{ $post->title }}">
+                                                <img src="https://via.placeholder.com/300x200?text=Aj+Group" class="img-fluid rounded-start w-100 object-fit-cover" alt="{{ $post->title }}">
                                             </a>
                                         @endif
                                     </div>

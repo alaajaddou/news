@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', $service->title . ' - Alaa M. Jaddou')
+@section('title', $service->title . ' - Aj Group')
 @section('meta_description', $service->description)
-@section('og_title', $service->title . ' - Alaa M. Jaddou')
+@section('og_title', $service->title . ' - Aj Group')
 @section('og_description', $service->description)
 
 @section('content')
@@ -31,7 +31,7 @@
                     <!-- CTA -->
                     <div class="bg-light p-4 rounded mb-5">
                         <h3>Interested in this service?</h3>
-                        <p>Contact me to discuss how I can help with your specific needs.</p>
+                        <p>Contact us to discuss how we can help with your specific needs.</p>
                         <a href="{{ route('contact.index') }}?service={{ $service->title }}" class="btn btn-primary">Get in Touch</a>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                             <ul class="list-unstyled mb-0">
                                 <li class="mb-3">
                                     <i class="fas fa-envelope me-2 text-primary"></i>
-                                    <a href="mailto:info@alaajaddou.com" class="text-decoration-none">info@alaajaddou.com</a>
+                                    <a href="mailto:info@aj-group.ps" class="text-decoration-none">info@aj-group.ps</a>
                                 </li>
                                 <li class="mb-3">
                                     <i class="fas fa-phone me-2 text-primary"></i>

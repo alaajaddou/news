@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alaa M. Jaddou | AI Powered Solutions</title>
+    <title>Aj Group | AI Powered Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -12,9 +12,9 @@
 
 <!-- Header with gradient background -->
 <header class="bg-gradient-to-r from-primary-500 via-secondary-500 to-danger-500 text-white py-8 px-4 text-center">
-    <img src="{{ asset('images/logo.png') }}" alt="Alaa M. Jaddou Logo" class="max-w-[200px] mx-auto bg-white/90 p-3 rounded-full shadow-lg">
-    <h1 class="text-4xl font-bold mt-4">Alaa M. Jaddou</h1>
-    <p class="text-lg text-gray-200">AI Powered Solution Provider</p>
+    <img src="{{ asset('images/logo.svg') }}" alt="Aj Group Logo" class="max-w-[200px] mx-auto bg-white/90 p-3 rounded-full shadow-lg">
+    <h1 class="text-4xl font-bold mt-4">Aj Group</h1>
+    <p class="text-lg text-gray-200">AI-Powered Software & Solutions</p>
 </header>
 
 <!-- Intro Section -->
@@ -25,7 +25,7 @@
                 Empowering Innovation Through AI
             </h2>
             <p class="text-lg text-gray-600 leading-relaxed">
-                Alaa M. Jaddou delivers advanced AI solutions that automate, analyze, and accelerate business success. We combine data science, machine learning, and human expertise to create intelligent systems that think, learn, and evolve with your needs.
+                Aj Group delivers advanced AI solutions that automate, analyze, and accelerate business success. We combine data science, machine learning, and human expertise to create intelligent systems that think, learn, and evolve with your needs.
             </p>
         </div>
         <img class="flex-1 min-w-[300px] max-w-[500px] rounded-xl" src="{{ asset('images/ai.png') }}" alt="AI Tech Placeholder">
@@ -152,8 +152,8 @@
 
 <!-- Footer -->
 <footer class="bg-gradient-to-r from-gray-800 via-gray-900 to-black text-gray-300 py-8 px-4 text-center text-sm border-t-4 border-gradient-to-r from-primary-500 via-secondary-500 to-warning-500">
-    &copy; {{ date('Y') }} Alaa M. Jaddou. All rights reserved. | 
-    <a href="mailto:info@alaajaddou.com" class="text-primary-300 hover:text-primary-200 transition-colors">info@alaajaddou.com</a>
+    &copy; {{ date('Y') }} Aj Group. All rights reserved. | 
+    <a href="mailto:info@aj-group.ps" class="text-primary-300 hover:text-primary-200 transition-colors">info@aj-group.ps</a>
 </footer>
 
 </body>

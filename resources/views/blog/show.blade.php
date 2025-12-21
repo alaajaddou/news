@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', $post->title . ' - Alaa M. Jaddou')
+@section('title', $post->title . ' - Aj Group')
 @section('meta_description', $post->excerpt ?? Str::limit(strip_tags($post->content), 160))
-@section('og_title', $post->title . ' - Alaa M. Jaddou')
+@section('og_title', $post->title . ' - Aj Group')
 @section('og_description', $post->excerpt ?? Str::limit(strip_tags($post->content), 160))
-@section('og_image', url('storage/' . $post->featured_image) ?? asset('images/alaa-m-jaddou-logo.png'))
+@section('og_image', url('storage/' . $post->featured_image) ?? asset('images/logo.svg'))
 
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Blog - Alaa M. Jaddou')
-@section('meta_description', 'Explore articles, tutorials, and insights about artificial intelligence, machine learning, and technology from Alaa M. Jaddou.')
-@section('og_title', 'Blog - Alaa M. Jaddou')
-@section('og_description', 'Explore articles, tutorials, and insights about artificial intelligence, machine learning, and technology.')
+@section('title', 'Blog - Aj Group')
+@section('meta_description', 'Explore articles, tutorials, and insights about AI, machine learning, and software engineering from Aj Group.')
+@section('og_title', 'Blog - Aj Group')
+@section('og_description', 'Explore articles, tutorials, and insights about artificial intelligence, machine learning, and software engineering.')
 
 @section('content')
     <!-- Hero Section -->
@@ -31,7 +31,7 @@
                                             </a>
                                         @else
                                             <a href="{{ route('blog.show', $post) }}">
-                                                <img src="https://via.placeholder.com/300x200?text=Alaa+M.+Jaddou" class="w-full h-full object-cover rounded-tl-lg md:rounded-bl-lg" alt="{{ $post->title }}">
+                                                <img src="https://via.placeholder.com/300x200?text=Aj+Group" class="w-full h-full object-cover rounded-tl-lg md:rounded-bl-lg" alt="{{ $post->title }}">
                                             </a>
                                         @endif
                                     </div>
