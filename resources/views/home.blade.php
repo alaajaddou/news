@@ -16,10 +16,6 @@
                 <a href="{{ route('services.index') }}" class="bg-white text-indigo-700 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium shadow-md transition duration-300">My Services</a>
                 <a href="{{ route('contact.index') }}" class="bg-transparent hover:bg-indigo-600 border-2 border-white px-6 py-3 rounded-lg font-medium transition duration-300">Contact Me</a>
             </div>
-            <div class="mt-8">
-                <img src="https://nfs.aj-group.ps/index.php/core/preview?fileId=1972&x=1920&y=1080&a=true&etag=87127e0ea5c6e7748151078f8b82afc6"
-                     alt="Alaa M. Jaddou" class="mx-auto w-64 h-64 md:w-72 md:h-72 rounded-full shadow-xl object-cover">
-            </div>
         </div>
     </section>
 
@@ -105,6 +101,46 @@
 
             <div class="text-center mt-12">
                 <a href="{{ route('services.index') }}" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium shadow-md transition duration-300">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Posts Section -->
+    <section class="py-16 bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Latest Articles</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Insights and updates from my recent work</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @if($featuredPosts->count() > 0)
+                    @foreach($featuredPosts as $post)
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105 flex flex-col h-full">
+                            @if($post->featured_image)
+                                <img src="{{ url('storage/' . $post->featured_image) }}" class="w-full h-48 object-cover" alt="{{ $post->title }}">
+                            @else
+                                <img src="https://via.placeholder.com/600x400?text=Alaa+M.+Jaddou" class="w-full h-48 object-cover" alt="{{ $post->title }}">
+                            @endif
+                            <div class="p-6 flex flex-col flex-1">
+                                <h3 class="text-xl font-semibold mb-3">{{ $post->title }}</h3>
+                                <p class="text-gray-600 mb-4">{{ $post->excerpt ?? Str::limit(strip_tags($post->content), 100) }}</p>
+                                <div class="mt-auto flex justify-between items-center">
+                                    <span class="text-sm text-gray-500">{{ $post->published_at->format('M d, Y') }}</span>
+                                    <a href="{{ route('blog.show', $post->slug) }}" class="text-indigo-600 hover:text-indigo-800 font-medium">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="col-span-3 text-center py-8">
+                        <p class="text-gray-600">No articles yet. Check back soon!</p>
+                    </div>
+                @endif
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="{{ route('blog.index') }}" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium shadow-md transition duration-300">View All Articles</a>
             </div>
         </div>
     </section>
