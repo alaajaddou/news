@@ -85,8 +85,8 @@
                     @endforeach
                 @else
                     @foreach($defaults as $d)
-                        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
-                            <div class="p-6">
+                        <div class="bg-gradient-to-br from-indigo-50 to-white border-t-4 border-l-4 border-indigo-600 p-6 rounded-lg shadow-md hover:shadow-lg mb-6 transition">
+                            <div class="p-3">
                                 <div class="flex items-center justify-between mb-4">
                                     <div class="flex items-center gap-4">
                                         <div class="text-3xl text-indigo-600"><i class="{{ $d['icon'] }}"></i></div>
@@ -96,13 +96,13 @@
                                 <p class="text-gray-600 mb-4">{{ $d['description'] }}</p>
                                 <div class="mb-4">
                                     @foreach($d['features'] as $f)
-                                        <span class="inline-block bg-indigo-50 text-indigo-700 px-2 py-1 mr-1 rounded-full text-sm">{{ $f }}</span>
+                                        <span class="inline-block bg-white border-2 border-indigo-600 text-indigo-700 px-2 py-1 mr-1 mb-1 rounded-full text-sm">{{ $f }}</span>
                                     @endforeach
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <div class="flex -space-x-2">
                                         @foreach(array_slice($d['technologies'],0,4) as $t)
-                                            <span class="px-2 py-1 bg-gray-100 text-sm text-gray-700 rounded">{{ $t }}</span>
+                                            <span class="px-2 py-1 bg-white shadow-sm text-sm text-gray-700 rounded">{{ $t }}</span>
                                         @endforeach
                                     </div>
                                 </div>

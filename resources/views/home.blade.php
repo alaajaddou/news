@@ -71,15 +71,15 @@
                     @endforeach
                 @else
                     <!-- Default Services -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                    <div class="bg-gradient-to-br from-indigo-50 to-white border-t-4 border-l-4 border-indigo-600 p-6 rounded-lg shadow-md hover:shadow-lg mb-6  transition-transform duration-300 hover:transform hover:scale-105">
                         <div class="p-6 text-center">
                             <div class="mb-4"><i class="fas fa-code text-4xl text-indigo-600"></i></div>
                             <h3 class="text-xl font-semibold mb-3">Frontend Development</h3>
                             <p class="text-gray-600 mb-6">Modern, responsive web applications built with the latest frontend technologies.</p>
-                            <a href="{{ route('services.index') }}" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
+                            <a href="{{ route('services.index') }}" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition">Learn More</a>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                    <div class="bg-gradient-to-br from-indigo-50 to-white border-t-4 border-l-4 border-indigo-600 p-6 rounded-lg shadow-md hover:shadow-lg mb-6  transition-transform duration-300 hover:transform hover:scale-105">
                         <div class="p-6 text-center">
                             <div class="mb-4"><i class="fas fa-brain text-4xl text-indigo-600"></i></div>
                             <h3 class="text-xl font-semibold mb-3">AI Project Consultation</h3>
@@ -87,7 +87,7 @@
                             <a href="{{ route('services.index') }}" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                    <div class="bg-gradient-to-br from-indigo-50 to-white border-t-4 border-l-4 border-indigo-600 p-6 rounded-lg shadow-md hover:shadow-lg mb-6  transition-transform duration-300 hover:transform hover:scale-105">
                         <div class="p-6 text-center">
                             <div class="mb-4"><i class="fas fa-database text-4xl text-indigo-600"></i></div>
                             <h3 class="text-xl font-semibold mb-3">ERP Solutions</h3>
@@ -95,7 +95,7 @@
                             <a href="{{ route('services.index') }}" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                    <div class="bg-gradient-to-br from-indigo-50 to-white border-t-4 border-l-4 border-indigo-600 p-6 rounded-lg shadow-md hover:shadow-lg mb-6  transition-transform duration-300 hover:transform hover:scale-105">
                         <div class="p-6 text-center">
                             <div class="mb-4"><i class="fas fa-cloud-upload-alt text-4xl text-indigo-600"></i></div>
                             <h3 class="text-xl font-semibold mb-3">DevOps & Cloud</h3>
@@ -103,7 +103,7 @@
                             <a href="{{ route('services.index') }}" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                    <div class="bg-gradient-to-br from-indigo-50 to-white border-t-4 border-l-4 border-indigo-600 p-6 rounded-lg shadow-md hover:shadow-lg mb-6  transition-transform duration-300 hover:transform hover:scale-105">
                         <div class="p-6 text-center">
                             <div class="mb-4"><i class="fas fa-paint-brush text-4xl text-indigo-600"></i></div>
                             <h3 class="text-xl font-semibold mb-3">UI/UX Design</h3>
@@ -111,7 +111,7 @@
                             <a href="{{ route('services.index') }}" class="block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition duration-300">Learn More</a>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                    <div class="bg-gradient-to-br from-indigo-50 to-white border-t-4 border-l-4 border-indigo-600 p-6 rounded-lg shadow-md hover:shadow-lg mb-6  transition-transform duration-300 hover:transform hover:scale-105">
                         <div class="p-6 text-center">
                             <div class="mb-4"><i class="fas fa-cogs text-4xl text-indigo-600"></i></div>
                             <h3 class="text-xl font-semibold mb-3">CMS & Content Platforms</h3>
@@ -139,7 +139,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @if($featuredPosts->count() > 0)
                     @foreach($featuredPosts as $post)
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105 flex flex-col h-full">
+                        <div class="bg-gradient-to-br from-indigo-50 to-white border-t-4 border-l-4 border-indigo-600 p-6 rounded-lg shadow-md hover:shadow-lg mb-6  transition-transform duration-300 hover:transform hover:scale-105">
                                 @if($post->featured_image)
                                 <img src="{{ url('storage/' . $post->featured_image) }}" class="w-full h-48 object-cover" alt="{{ $post->title }}">
                             @else

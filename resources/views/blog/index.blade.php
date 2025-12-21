@@ -22,7 +22,7 @@
                 <div class="w-full lg:w-2/3 px-4">
                     @if($posts->count() > 0)
                         @foreach($posts as $post)
-                            <div class="bg-gradient-to-r from-indigo-50 to-white border-l-4 border-indigo-600 rounded-lg shadow-sm mb-8 overflow-hidden">
+                            <div class="bg-gradient-to-r from-indigo-50 to-white border-l-4 border-indigo-600 rounded-lg shadow-sm mb-8 overflow-hidden hover:shadow-lg">
                                 <div class="flex flex-wrap">
                                     <div class="w-full md:w-2/3">
                                         <div class="p-6">
@@ -76,7 +76,7 @@
 
                 <!-- Sidebar -->
                 <div class="w-full lg:w-1/3 px-4">
-                    <div class="bg-white rounded-lg shadow-md mb-8">
+                    <div class="bg-gradient-to-r from-indigo-50 to-white border-l-4 border-indigo-600 p-1 rounded-lg shadow-md hover:shadow-lg mb-8">
                         <div class="border-b border-slate-200 px-6 py-4">
                             <h5 class="font-semibold text-lg m-0 text-slate-800">Categories</h5>
                         </div>
@@ -100,7 +100,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-lg shadow-md">
+                    <div class="bg-gradient-to-r from-indigo-50 to-white border-l-4 border-indigo-600 p-1 rounded-lg shadow-md hover:shadow-lg mb-8">
                         <div class="border-b border-slate-200 px-6 py-4">
                             <h5 class="font-semibold text-lg m-0 text-slate-800">Popular Tags</h5>
                         </div>
